@@ -1,4 +1,4 @@
-const config = require('../../utils/config.js'); 
+var config = require('../../utils/config.js'); 
 var app = getApp();
 var carlist = [];
 Page({
