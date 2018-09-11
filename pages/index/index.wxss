@@ -11,7 +11,7 @@ font-size: 12px; line-height: 28px; color: #333;}
 .addnav{position: absolute; right:80rpx; top: 4px; font-size: 24px; font-weight: 700;}
 .back{position: absolute; left:10rpx; top: 4px; font-size: 50rpx; transform: scaleY(0.6);width: 40rpx; }
 .navli{position: absolute; right:0rpx; top: 36px; width: 200rpx; line-height: 32px; font-size: 26rpx; background: #373a41; color: #fff;}
-.navli view{ border-bottom: 1rpx solid #161920;}
+.navli view{ border-bottom: 1rpx solid #161920; }
 
 .navbox{display: flex; flex-wrap: wrap; padding-bottom: 6px; margin-top: 44px;}
 .navbox view{width: 23%; padding: 0 1%; text-align: center; font-size:28rpx; line-height: 26px;color: #6a6a6a;}

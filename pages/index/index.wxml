@@ -130,3 +130,4 @@ style="width: 100%; height: {{view.Height}}px;"></map>
 
 <import src="/template/shouquan/shouquan.wxml"/>
 <template is="tishi" data="{{istrue}}" />
+
