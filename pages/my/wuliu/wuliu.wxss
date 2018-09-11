@@ -1,0 +1,17 @@
+.top{display: flex; align-items:center; padding: 20rpx; border-bottom: 15rpx solid #f5f5f5; color: #fe8b12; line-height: 36rpx;}
+.top image{width: 50rpx; height: 50rpx; margin-right: 20rpx;} 
+
+.wuliu{padding: 30rpx;}
+.wlitem{display: flex; color: #999;}
+.wlitem .lf{width: 20%; padding:0 5%; text-align: right;}
+.wlitem .rg{position: relative; width: 60%; padding:0 5%; min-height: 200rpx; padding-bottom: 30rpx;
+ border-left:1rpx solid #ddd; box-sizing: border-box;}
+ .wlitem .rg:after{content: ""; display: block; width: 30rpx; height: 30rpx; background: #ddd;
+ position: absolute; left: -15rpx; top: 0rpx; border-radius:30rpx;}
+.wlitem .lf .date{font-size: 32rpx; font-weight: 600;}
+.wlitem .lf .time{margin: 20rpx 0;}
+
+.wlitem .rg .stname{font-size: 32rpx; font-weight: 600;}
+.wlitem .rg .info{margin: 20rpx 0;}
+
+.kong{text-align: center; color: #999; margin-top: 140rpx;}

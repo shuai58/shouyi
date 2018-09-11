@@ -1,0 +1,34 @@
+<navigator url="/pages/address/editaddress/editaddress"class="fabu">
+	<image src="/img/fabu.png"></image>
+	<text>添加地址</text>
+</navigator>  
+
+<view class="address">
+	<view wx:for="{{addresslist}}" wx:key="key" class="addresslist">
+		<view class="top">
+			<view class="name">[收货人] {{item.people}}</view>
+			<view>{{item.iphone}}</view>
+		</view> 
+		<view class="xiangxi">
+			{{item.adder.province}} {{item.adder.city}} {{item.adder.county}} {{item.adder.detail}}
+		</view>
+		<view class="guanli">
+			<view class="moren" data-id="{{item.id}}" data-index="{{index}}" bindtap="putChoose">
+				<icon wx-if="{{item.statu==1}}" type="success" size="14" color="#ff3131"/>
+				<icon wx-if="{{item.statu==0}}" type="success" size="14" color="#999"/>
+				<text>设为默认地址</text>
+			</view>
+			<view class="bianji">
+				<view data-id="{{item.id}}" bindtap="putEdit">
+					<image src="/img/updata.png"></image>
+					<text>编辑</text>
+				</view>
+				<view data-id="{{item.id}}" bindtap="delclick">
+					<image src="/img/del.png"></image>
+					<text>删除</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+ 

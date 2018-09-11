@@ -1,0 +1,6 @@
+ .list{height: 100rpx; line-height: 100rpx; width: 100%; font-size: 32rpx; padding: 0rpx 30rpx; color: #666; border-bottom: 1px solid #efefef; box-sizing: border-box; background: #fff;}
+.icon{width: 50rpx; height: 50rpx; margin-right: 20rpx; vertical-align: middle;}
+.r-icon{width: 14rpx; height:30rpx; float: right; margin-top: 35rpx;}
+
+.tishi{width: 100%; margin: 150rpx 0; color: #999; text-align: center;}
+.mycell{padding: 10px 0;}

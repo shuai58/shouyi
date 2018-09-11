@@ -1,0 +1,10 @@
+
+.section {position: relative; width: 94%; margin: 0 auto; margin-top: 25rpx; padding:20rpx 30rpx; padding-left:90rpx; background: #fff; font-size: 30rpx; border-radius: 10rpx; border: 1px solid #ddd; box-sizing: border-box;}
+.section image{position: absolute; left: 20rpx; top: 14rpx; width: 50rpx; height: 50rpx;}
+
+.section textarea{width: auto; height: 220rpx;}
+
+.section2 { width: 94%; margin: 0 auto; margin-top: 25rpx; padding:20rpx; height:210rpx; background: #fff; font-size: 30rpx; border-radius: 10rpx; border: 1px solid #ddd; box-sizing: border-box;}
+.section2 .img{width: 146rpx; height: 146rpx; margin: 10rpx;}
+
+.btn{ width: 94%; margin-top: 100rpx; background: #22ac38; color: #fff; font-size: 40rpx;}

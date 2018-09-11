@@ -1,0 +1,69 @@
+<view class="top">
+	<view class="inputbox">
+		<image bindtap="goodslist" class="search-icon" src="/img/search.png"></image>
+ 		<input type="text" bindinput="getkeyword" bindconfirm="goodslist" placeholder="搜索所有商品"/>
+	</view>
+	<view class="carbox" bindtap="gocar">
+		<image class="car-icon" src="/img/car.png"></image>
+ 		<view>购物车</view>
+	</view>
+	<text wx:if="{{back==1}}" class="back" bindtap="back">〈 </text>
+</view>
+<view wx:if="{{navbox==1}}" class="navbox">
+	<block  wx:for="{{navitem}}" wx:key="key">
+	<view  data-id="{{item.id}}" bindtap="navclick" class="{{item.ison==0?'':'red'}}">{{item.title}}</view>
+	</block>
+	<view bindtap="morenav">••••••</view>
+</view>
+<view wx:if="{{navbox2==1}}" class="navfix">
+    <view class='boxitem'>
+        <scroll-view scroll-y style="height: 100%;"  scroll-into-view="{{toView}}" scroll-with-animation="true">
+            <view class='item {{index==0?"on":""}}' wx:for="{{classdata}}" wx:key="key">
+                <view class='item-ti'>{{item.title}}</view>
+                <view class='itemlist'>
+                	<view class='item-sub' wx:for="{{item.class}}" data-id="{{item.id}}" wx:key="key" bindtap="itemnav">{{item.title}}</view>
+                </view>
+            </view>
+        </scroll-view>
+	</view>
+</view>
+<view wx:if="{{navbox2==0}}" class="box">
+	<swiper wx:if="{{banner.length>0}}" class="banner" indicator-active-color="#000000" indicator-dots="true" indicator-color="rgba(0,0,0,.4)" autoplay="true" circular="true">
+		<swiper-item wx:for="{{banner}}" wx:key="key">
+			<image data-id="{{item.gid}}" bindtap="goodsxq" src="{{item.image}}"></image>
+		</swiper-item>	 
+	</swiper>
+	<view class="title">新品上架</view> 
+	<view class="goodslist">
+		<view wx:for="{{shoplist}}" wx:key="key" class="goodsitem">
+		 	<view class="imgbox" data-id = "{{item.id}}" bindtap="goodsxq">
+		 		<image src="{{item.images}}"></image>
+		 	</view>
+		 	<view class="name">{{item.name}}</view>
+		 	<view class="price">
+		 		<text>￥{{item.sale_price}}</text>
+		 		<image src="/img/car.png" data-gid="{{item.id}}" mode="widthFix" bindtap="addcar"></image>
+		 	</view>
+		</view>
+		<view wx:if="{{shoplist.length<=0}}" class="nodata">还没有最新商品数据！</view>
+	</view>	
+</view> 
+
+<view wx:if="{{hbshow==1}}" class="hbbg">
+	<view class="hbimg">
+		<image bindtap="hbclose" class="hbclose" src="/img/s7.png"></image>
+		<image bindtap="gethb" class="img" src="/img/hongbao.png"></image>
+	</view>
+</view>
+
+<view wx:if="{{isshare==1}}" class="js_dialog" style="opacity: 1;">
+    <view class="weui-mask"></view>
+    <view class="weui-dialog">
+        <view class="weui-dialog__hd"><view class="weui-dialog__title">恭喜你！</view></view>
+        <view class="weui-dialog__bd">{{info}}</view>
+        <view class="weui-dialog__ft">
+            <text class="weui-dialog__btn weui-dialog__btn_default" bindtap="quxiao">取消</text>
+            <button open-type="share" class="weui-dialog__btn weui-dialog__btn_primary" bindgetuserinfo="share">立即分享</button>
+        </view>
+    </view>
+</view>

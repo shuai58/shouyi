@@ -1,0 +1,14 @@
+.plitem{padding:20rpx; }
+.plitem .username{display: flex; align-items: center;}
+.plitem .username image{width: 100rpx; height: 100rpx; border-radius:100rpx;}
+.plitem .username text{margin-left: 20rpx;}
+.plitem .content{color: #666;font-size: 28rpx; margin: 40rpx 0; line-height: 36rpx;}
+
+.plitem .plimg{display: flex; }
+.plitem .plimg .picbox{display: flex; align-items: center;background:#f5f5f5; width: 160rpx;height: 160rpx; margin: 10rpx; overflow: hidden;}
+.plitem .plimg image{display: block; width:160rpx;} 
+
+.istongyi{display: flex; padding: 150rpx 20rpx; justify-content: center;}
+.istongyi view{width: 150rpx; height: 60rpx; margin: 0 50rpx; border-radius:10rpx; line-height: 60rpx; color: #fff; text-align: center;}
+.istongyi .red{background: #ff3131;}
+.istongyi .green{background: #20ae38;}

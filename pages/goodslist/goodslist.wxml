@@ -1,0 +1,38 @@
+<view class="top">
+	<view class="inputbox">
+		<image bindtap="goodslist" class="search-icon" src="/img/search.png"></image>
+ 		<input type="text" bindinput="getkeyword" bindconfirm="goodslist" value="{{keyword}}" placeholder="搜索所有商品"/>
+	</view>
+	<view class="carbox" bindtap="shaixuan">
+		<image class="car-icon" src="/img/shaixuan.png"></image>
+ 		<view>筛选</view>
+	</view>
+</view>
+<view wx-if="{{isshaixuan==1}}" class="shaixuanbg">
+	<view class="sxbox">
+		<view style="font-size: 30rpx;">价格区间</view>
+		<view class="qjinp">
+			<input type="number" bindinput="startv" placeholder="最低价" />
+			<text>-</text>
+			<input type="number" bindinput="endv" placeholder="最高价" />
+		</view>
+		<view class="btnbox">
+	    	<button bindtap="quxiao">取消</button>
+	    	<button type="primary"  bindtap="queding">确定</button>
+	    </view>
+	</view>
+</view>
+
+<view class="goodslist">
+	<view wx:for="{{shoplist}}" wx:key="key" class="goodsitem">
+	 	<view class="imgbox" data-id = "{{item.id}}" bindtap="goodsxq">
+	 		<image src="{{item.images}}"></image>
+	 	</view>
+	 	<view class="name">{{item.name}}</view>
+	 	<view class="price">
+	 		<text>￥{{item.sale_price}}</text>
+	 		<image src="/img/car.png" data-gid="{{item.id}}" mode="widthFix" bindtap="addcar"></image>
+	 	</view>
+	</view>
+	<view wx:if="{{shoplist.length<=0}}" class="nodata">暂没有你筛选的商品！</view>
+</view>	

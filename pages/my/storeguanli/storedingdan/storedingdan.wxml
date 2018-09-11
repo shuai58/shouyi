@@ -1,0 +1,63 @@
+<view class="menu position">
+	<view class="menuli" data-id="0" bindtap="isselect"><text class="{{isselect==0?'active':''}}">已完成</text></view>
+	<view class="menuli" data-id="1" bindtap="isselect"><text class="{{isselect==1?'active':''}}">未发货</text></view>
+	<view class="menuli" data-id="2" bindtap="isselect"><text class="{{isselect==2?'active':''}}">已发货</text></view>
+	<view class="menuli" data-id="3" bindtap="isselect"><text class="{{isselect==3?'active':''}}">退货</text></view>
+</view>
+<view class="padding-top-70">
+	<view wx:for="{{dingdan}}" wx:key="key" class="dingdan">
+		<view class="shop">
+			<view class="nameimg">
+				<image src="{{item.shop_img}}"></image>
+				<text>{{item.shop_name}}</text>
+			</view>
+			<view wx:if="{{item.statu==1&&item.is_delivery==0&&item.is_refund==0}}" class="staus">未发货</view>
+			<view wx:if="{{item.statu==1&&item.is_delivery==1&&item.is_refund==0}}" class="staus">已发货</view>
+			<view wx:if="{{item.is_refund==1}}" class="staus">待退款</view>
+			<view wx:if="{{item.statu==4&&item.is_refund!=2}}" class="staus">交易完成</view>
+			<view wx:if="{{item.statu==4&&item.is_refund==2}}" class="staus">退款成功</view>
+		</view>
+		<view wx:for="{{item.group}}" wx:key="key"  wx:for-item="item2" class="ddbox">
+			<view class="left">
+				<view class="lfimg">
+					<image src="{{item2.image}}" mode="widthFix"></image>
+				</view>
+			</view> 
+			<view class="right">
+				<view class="top">
+					<view class="intro">
+						<view class="name">{{item2.s_name}}</view>
+						<view class="guige">{{item2.rule_name}}</view>
+					</view>
+					<view class="pricenum">
+						<view class="price">￥{{item2.unit_price}}</view>
+						<view class="num">x<text>{{item2.num}}</text></view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view wx:if="{{item.s_packet>0}}" class="weui-cell mycell">
+		    <view class="weui-cell__bd">抵用店铺红包 </view> 
+		    <view class="weui-cell__ft2">抵用红包￥{{item.s_packet}}</view>
+		</view>
+		<view  wx:if="{{item.packet>0}}" class="weui-cell mycell">
+		    <view class="weui-cell__bd">抵用平台红包 </view> 
+		    <view class="weui-cell__ft2">抵用红包￥{{item.packet}}</view>
+		</view>
+		<view class="heji">
+			<text>共{{item.gong_num}}件商品</text>
+			合计：￥{{item.real_price}}
+			<text wx:if="{{item.c_price<=0}}">（免运费）</text>
+			<text wx:else>（含运费￥{{item.c_price}}）</text>
+		</view>
+		<view class="bottom">
+			<navigator url="/pages/my/storeguanli/storedingdan/dingdanxinxi/dingdanxinxi?orderid={{item.id}}" wx:if="{{item.statu==1&&item.is_delivery==0&&item.is_refund==0}}">去发货</navigator>
+			<navigator url="/pages/my/wuliu/wuliu?oid={{item.id}}&&mailno={{item.courier}}" wx:if="{{item.statu==1&&item.is_delivery==1}}">查看物流</navigator>
+			<view bindtap="urlnav" data-url="{{item.id+','+item.price+','+item.real_price+','+item.order_odd+','+item.out_trade_no}}" wx:if="{{item.is_refund==1}}">查看退款原因</view> 
+			<view data-id="{{item.id}}" bindtap="del" wx:if="{{item.statu==4}}">删除记录</view>
+			<view wx:if="{{item.statu==4&&item.is_evaluate==0}}">未评价</view>
+			<navigator url="/pages/my/pingjia/pingjia?oid={{item.id}}" wx:if="{{item.statu==4&&item.is_evaluate==1}}">查看评价</navigator>
+		</view>
+	</view>
+</view>
+<view wx:if="{{dingdan.length<=0}}" class="tishi">暂无记录！</view> 

@@ -1,0 +1,8 @@
+.toptit{font-size: 30rpx; line-height: 80rpx; text-align: center; background:#f0f1f6;}
+.ul {margin-bottom: 20rpx;}
+.ul .li{display: flex; align-items: center; padding: 20rpx; line-height: 36rpx; border-bottom: 1rpx solid #eee;}
+.ul .li .liname{margin-right: 10rpx;min-width:120rpx;}
+.ul .li .p{color: #666;}
+.ul .li .inp input{color: #666;}
+.mycell{padding: 10px 0;}
+.dingdan .heji {margin-top:0rpx;}

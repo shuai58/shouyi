@@ -1,0 +1,59 @@
+<view wx:if="{{carlist.length>0}}" class="action position">
+	<view class="selectbtn" bindtap="selectAll">
+		<text wx:if="{{selectAllStatus==0}}" class="xuanzhe"></text>
+		<icon wx:else type="success" size="18" color="#ff3131"/>
+		<text>全选</text>
+	</view>
+	<image class="del" bindtap="deleteList" src="/img/del.png"></image>
+</view>
+<view wx:if="{{carlist.length<=0}}" class="kong">您的购物车还是空的！</view>
+
+<view class="padding-top-80 padding-bot-90">
+	<view wx:for="{{carlist}}" wx:key="key" class="dingdan">
+		<view class="shop">
+			<view class="nameimg">
+				<image src="{{item.logo}}"></image>
+				<text>{{item.shop_name}}</text>
+			</view>
+		</view>
+		<view wx:for="{{item.massage}}" wx:key="key" class="ddbox">
+			<view class="left" data-id="{{item.gid}}" bindtap="goodsxq">
+				<view class="lfimg">
+					<image src="{{item.image}}" mode="widthFix"></image>
+				</view>
+			</view> 
+			<view class="right">
+				<view class="top" data-id="{{item.gid}}" bindtap="goodsxq">
+					<view class="intro">
+						<view class="name">{{item.goods_name}}</view>
+						<view class="guige">{{item.rules_name}}</view>
+					</view>
+					<view class="pricenum">
+						<view class="price">￥{{item.goods_price}}</view>
+						<view class="num">x<text>{{item.num}}</text></view>
+					</view>
+				</view>
+				<view class="jiajian">
+					<view bindtap="minusCount" data-shopid="{{item.shop_id}}" data-index="{{index}}">-</view>
+					<view>{{item.num}}</view>
+					<view bindtap="addCount" data-shopid="{{item.shop_id}}" data-index="{{index}}">+</view>
+				</view>
+			</view>
+			<view class="xuanzhebtn">
+				<text wx:if="{{item.selected==0}}" bindtap="selectList" data-shopid="{{item.shop_id}}" data-index="{{index}}" class="xuanzhe"></text>
+				<icon wx:else bindtap="selectList" data-shopid="{{item.shop_id}}" data-index="{{index}}" type="success" size="18" color="#ff3131"/>
+			</view>
+		</view>
+		<view class="heji">
+			<text>共{{item.goodsnum}}件商品</text>合计：￥{{item.goodsprice}} 
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{carlist.length>0}}" class="tongji">
+	<view class="jishu">
+		<view>总计：￥{{totalPrice}}</view>
+		<view>（共{{totalNum}}件商品）</view>
+	</view>
+	<view bindtap="jiesuan" class="zhifu">结算</view>
+</view>

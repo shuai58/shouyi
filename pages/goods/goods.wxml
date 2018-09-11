@@ -1,0 +1,102 @@
+<swiper class="banner" indicator-active-color="#000000"  indicator-dots="true" indicator-color="rgba(0,0,0,.4)" autoplay="true" circular="true">
+	<swiper-item  wx:for="{{goods.banner}}" wx:key="key">
+		<image bindtap="imgYu" data-yu="{{goods.banner}}" data-src="{{item}}" src="{{item}}"></image>
+	</swiper-item>	
+</swiper> 
+<view class="box">
+	<view class="title">
+		<view class="name">{{goods.name}}</view>
+		<view class="bot">
+			<view class="price">￥{{goods.sale_price}}<text class="shichang">市场价：<text>￥{{goods.price}}</text></text></view>
+			<view class="num">销量：{{goods.sales}}件</view>
+		</view>
+	</view>
+	<view class="weui-cell fenlei" bindtap="alertShow">
+	    <view class="weui-cell__bd">选择分类</view> 
+	    <view class="weui-cell__ft"></view>
+	</view>
+	<view class="menu">
+		<view class="menuli" bindtap="isselect"><text class="{{isselect?'active':''}}">商品详情</text></view>
+		<view class="menuli" bindtap="isselect"><text class="{{isselect?'':'active'}}">商品评价</text></view>
+	</view>
+	<view wx-if="{{isselect==true}}" class="xiangqing">
+		<view class="p">{{goods.details.content}}</view>
+		<image class="img" wx:for="{{goods.details.images}}" bindtap="imgYu" data-yu="{{goods.details.images}}" data-src="{{item}}" wx:key="key" src="{{item}}" mode="widthFix"></image>
+	</view>
+	<view wx-if="{{isselect==false}}" class="pingjia">
+		<view wx:if="{{pllist.length<=0}}" class="nodata">该商品暂无评价！</view>
+		<view wx:for="{{pllist}}" wx:key="key"  wx:for-item="item" class="plitem">
+		 	<view class="username">
+		 		<image src="{{item.avatar}}"></image>
+		 		<text>{{item.nickname}}</text>
+		 	</view>
+		 	<view class="time">
+		 		<view class="left">{{item.addtime}}<!--<text>佛系列：观音</text>--></view>
+		 		<view class="star">
+		 			<block wx:for="{{5}}" wx:for-index="index" wx:for-item="star" wx:key="key">
+		 			<image wx:if="{{index < item.score}}" src="/img/star.png"></image>
+		 			<image wx:else src="/img/star2.png"></image>
+		 			</block>
+		 		</view>
+		 	</view>
+		 	<view class="content">
+		 		{{item.reply}}
+		 	</view>
+		 	<view class="plimg">
+	 			<view wx:for="{{item.image}}" wx:key="key" wx:for-item="img" class="picbox">
+	 				<image bindtap="imgYu" data-yu="{{item.image}}" data-src="{{img}}" src="{{img}}" mode="widthFix"></image>
+	 			</view>
+	 		</view>
+		</view>
+	</view>
+</view>
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+	<view class="alertbox">
+		<view class="top">
+			<view class="cpimg">
+				<image src="{{guigeimg}}" mode="widthFix"></image>
+			</view>
+			<view class="cpname">
+				<vive class="price">{{goods.name}}</vive>
+				<vive class="lan">请选择分类</vive>
+				<vive class="yixuan">已选择："{{xuanzheclass}}"<text style="margin-left: 30rpx; color: #ff3131;">{{price}}</text></vive>
+			</view>
+			<image class="close" bindtap="hideModal" src="/img/F-icon12x.png"></image>
+		</view>
+		<view class="lanname">选择分类</view>
+		<scroll-view class="csbox" scroll-y="true">
+			<block wx:for="{{goods.rules}}" wx:key="key">
+			<view class='csitem {{item.isselect=="1"?"on":""}}' data-id="{{item.id}}" bindtap="guigeclick">{{item.title}}</view>
+			</block>
+		</scroll-view>
+		<view class="shuliang">
+			<view>购买数量</view>
+			<view class="jiajian">
+				<view bindtap="minusCount">-</view>
+				<view>{{shopnum}}</view>
+				<view bindtap="addCount">+</view>
+			</view>
+		</view>
+		<view class="goumai">
+			<view class="bgcor1" bindtap="addcar">加入购物车</view>
+			<view bindtap="shopclick" class="bgcor2" bindtap="goshop">立即购买</view>	
+		</view>
+	</view>
+</view>
+<view class="nav">
+	<view class="navli" bindtap="backindex">
+		<image src="/img/index.png"></image>
+		<view>首页</view>
+	</view>
+	<view class="navli" bindtap="telclick">
+		<image src="/img/call.png"></image>
+		<view>联系客服</view>
+	</view>
+	<view class="navli" bindtap="gocar">
+		<image src="/img/car2.png"></image>
+		<view>购物车</view>
+	</view>
+	<view class="navli2" bindtap="addcar" style="background: #444444;">加入购物车</view>
+	<view class="navli2" bindtap="goshop" style="background: #ff3131;">立即购买</view>
+</view>

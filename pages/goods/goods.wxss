@@ -1,0 +1,92 @@
+.banner{width: 100%; height: 700rpx;}
+.banner image{display: block; width: 100%; height: 700rpx;}
+
+.nav{position: fixed; bottom: 0rpx; left: 0; z-index: 99; width: 100%; height: 100rpx; border-top:1rpx solid #eee; background: #fff; align-items: center; display: flex;}
+.nav .navli{width: 18%; text-align: center; font-size: 24rpx; padding-top: 12rpx; padding-bottom: 5rpx;}
+.nav .navli2{width: 24%; text-align: center; font-size: 30rpx; color: #fff; line-height:100rpx;}
+.nav .navli image{display: inline-block; width: 46rpx; height: 46rpx;}
+.nav .navli view{margin:0rpx auto; color: #909090;}
+
+.title{padding:15rpx; background: #fff;}
+.bot{display: flex; justify-content: space-between; padding: 10rpx 0;}
+.price{color: #ff3131; font-size: 30rpx;}
+.price .shichang{margin-left:30rpx; font-size:28rpx;}
+.price .shichang text{font-size: 20rpx; color: #999;}
+.num{font-size: 26rpx; color: #999;}
+.fenlei{ border-bottom:14rpx solid #eeeeee; line-height: 46rpx;}
+
+.box{padding-bottom: 100rpx;}
+
+.xiangqing{padding: 20rpx 10rpx;}
+.xiangqing .p{line-height: 36rpx; color: #666; font-size: 28rpx; margin-bottom: 10rpx;}
+.xiangqing .img{display: block; width: 100%;}
+
+.plitem{padding:20rpx; border-bottom:14rpx solid #eeeeee;}
+.plitem .username{display: flex; align-items: center;}
+.plitem .username image{width: 80rpx; height: 80rpx; border-radius:80rpx;}
+.plitem .username text{margin-left: 20rpx;}
+.plitem .time{display: flex; align-items: center; justify-content: space-between; margin-top: 10rpx;}
+.plitem .time .left{font-size: 26rpx; color: #999;}
+.plitem .time .left text{margin-left: 20rpx;}
+.plitem .time .star{display: flex; align-items: center;}
+.plitem .time .star image{width: 40rpx; height: 40rpx; margin-left: 10rpx;}
+.plitem .content{color: #666;font-size: 26rpx; margin: 15rpx 0; line-height: 36rpx;}
+
+.plitem .plimg{display: flex; }
+.plitem .plimg .picbox{display: flex; align-items: center; width: 160rpx;height: 160rpx; overflow: hidden; margin: 0 10rpx;}
+.plitem .plimg image{display: block; width:160rpx;} 
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:rgba(0,0,0,0.5);
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding: 20rpx;
+  padding-bottom:220rpx;
+  box-sizing: border-box;
+}
+
+.alertbox .top{position: relative; display: flex; font-size: 30rpx; text-align: left; border-bottom: 1rpx solid #eee; padding-bottom: 15rpx;}
+.alertbox .cpname{ width: 500rpx; margin-left: 30rpx; font-size: 28rpx;}
+.alertbox .cpname .price{display:block; color: #d50808; font-size: 30rpx;}
+.alertbox .cpname .lan{display:block; margin: 10rpx 0;}
+.alertbox .cpname .yixuan{display:block; line-height: 36rpx;}
+
+.close{position:absolute; top: 0rpx; right:0rpx; width:40rpx; height: 40rpx;}
+
+.lanname{line-height: 50rpx; margin-top: 15rpx; font-size: 30rpx;}
+
+.alertbox .cpimg{position:relative; top: -30rpx; left:0rpx; display: flex; align-items: center; width:120rpx; height: 120rpx; overflow: hidden; background: #fff; border: 1rpx solid #eee; border-radius:10rpx;}
+.alertbox .cpimg image{width: 100%;}
+.csitem{display: inline-block; height: 70rpx; line-height:70rpx; margin: 10rpx; font-size: 26rpx; color: #333; padding:0 20rpx; background: #f5f5f5; border-radius:10rpx;}
+.csbox{display: flex; flex-wrap: wrap; height: 400rpx; overflow: hidden; padding:10rpx 0;}
+.csbox .on{background: #ff3131; color: #fff;}
+.display{display: none !important;}
+.navscroll{width: 100%;}
+ 
+.shuliang{position: fixed; bottom: 100rpx; left: 0; z-index: 99; width: 100%; padding:30rpx; 
+box-sizing: border-box; border-top:1rpx solid #eee; background: #fff; display: flex; justify-content: space-between; align-items: center;} 
+.jiajian{ display: flex; width: 180rpx; height: 50rpx; border: 1rpx solid #eee;}
+.jiajian view{flex: 1; text-align: center; line-height:50rpx; border-right: 1rpx solid #eee; box-sizing: border-box;}
+.jiajian view:last-child{border-right: none;}
+
+.goumai{position: fixed; bottom: 0rpx; left: 0; z-index: 99; width: 100%; display: flex;}
+.goumai view{flex: 1; text-align: center; color: #fff; height: 100rpx; line-height: 100rpx;}
+.goumai .bgcor1{background: #ffad00;}
+.goumai .bgcor2{background: #ff6300;}
+
+.nodata{text-align: center; margin:100rpx 0; color: #999;}

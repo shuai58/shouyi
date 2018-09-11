@@ -1,0 +1,19 @@
+
+<view class="formbox">
+   <form bindsubmit="formSubmit">
+	  	<view class="section textarea">
+		  	<image src="/img/X3-mess.png"></image>
+		    <textarea placeholder="请填写您的问题" name="content"/>
+	  	</view>
+	  	<view class="section2">
+			<block wx:for="{{tempFilePaths}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+			<view class="imgbox">	
+				<image class="img" bindtap="imgYu" data-src="{{i}}" src="{{i}}"></image>
+				<image class="delbtn" bindtap="deleteImg" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+			</view>
+			</block>
+			<image wx-if="{{isshow==1}}" class="img" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+		</view>
+	  <button class="btn" formType="submit">提交</button>
+	</form>
+</view>

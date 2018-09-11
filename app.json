@@ -1,0 +1,75 @@
+{
+  "pages":[   
+  	"pages/index/index",
+    "pages/quan/quan",
+    "pages/market/market",
+    "pages/my/my",
+    "pages/car/car",
+    "pages/my/packet/packet",
+    "pages/pingfen/pingfen",
+    "pages/my/yijian/yijian",
+    "pages/index/store/store",
+    "pages/goodslist/goodslist",
+    "pages/goods/goods",
+    "pages/goods/dingdanxq/dingdanxq",
+    "pages/my/dingdan/dingdan",
+    "pages/my/wuliu/wuliu",
+    "pages/my/pingjia/pingjia",
+    "pages/my/storeguanli/storeguanli",
+    "pages/my/storeguanli/upgoods/upgoods",
+    "pages/my/storeguanli/guanli/guanli",
+    "pages/my/storeguanli/storedingdan/storedingdan",
+    "pages/my/storeguanli/storedingdan/dingdanxinxi/dingdanxinxi",
+    "pages/my/storeguanli/storedingdan/yuanyin/yuanyin",
+    "pages/my/storeguanli/kuaidi/kuaidi",
+    "pages/quan/fabu/fabu",
+    "pages/kaidian/kaidian",
+    "pages/shouyi/shouyi",
+    "pages/address/address",
+    "pages/address/editaddress/editaddress",
+    "pages/myfabu/myfabu",
+    "pages/shouquan/shouquan",
+    "pages/my/about/about",
+    "pages/my/storeguanli/jilu/jilu",
+    "pages/my/storeguanli/tixian/tixian"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "手艺人",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+  	"selectedColor":"#ff3131",
+  	"backgroundColor":"#ffffff",
+	  "borderStyle":"black",
+  	"color":"#909090",
+    "list": [{
+    	"iconPath":"img/nav1.png",
+    	"selectedIconPath":"img/navend1.png",
+      "pagePath": "pages/index/index",
+      "text": "首页"
+    },{
+    	"iconPath":"img/nav2.png",
+    	"selectedIconPath":"img/navend2.png",
+      "pagePath": "pages/quan/quan",
+      "text": "手艺圈"
+    },{
+    	"iconPath":"img/nav3.png",
+    	"selectedIconPath":"img/navend3.png",
+      "pagePath": "pages/market/market",
+      "text": "手艺集市"
+    },{
+    	"iconPath":"img/nav4.png",
+    	"selectedIconPath":"img/navend4.png",
+      "pagePath": "pages/my/my",
+      "text": "我的"
+    }]
+  },
+  "plugins": {
+    "myPlugin": {
+      "version": "1.0.6",
+      "provider": "wx5bc2ac602a747594"
+    }
+  } 
+}

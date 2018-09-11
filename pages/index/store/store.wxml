@@ -1,0 +1,89 @@
+
+<view class="body">
+	<view class="head">
+		<view class="storename">{{storeinfo.title}}</view>
+	 	<view class="storeimg">
+	 		<image src="{{storeinfo.logo}}"></image>
+	 	</view>
+	</view>
+	<scroll-view class="box" scroll-y bindscrolltolower="{{type.isstore==1?'onbottom':''}}" scroll-top="{{scrollTop}}">
+		<view wx:if="{{type.isintro==1}}" class="storeintro">
+			<view class="p">
+				{{storeinfo.abstract}}
+			</view>
+		</view>
+		<view wx:elif="{{type.ishome==1}}" class="homeimg">
+			<view class="picbox">
+				<swiper class="banner" bindchange="current" current="{{imgindex}}" circular="true">
+					<swiper-item wx:for="{{storeinfo.image}}" wx:key="key" >
+						<image data-yu="{{storeinfo.image}}" data-src="{{item}}" bindtap="imgYu" src="{{item}}"></image>
+					</swiper-item>	 
+				</swiper>
+				<view class="rgbtn" bindtap="lfbtn"></view>
+				<view class="lfbtn" bindtap="rgbtn"></view>
+			</view>	
+		</view>
+		<view wx:elif="{{type.isstore==1}}" class="goodslist">
+			<view wx:for="{{shoplist}}" wx:key="key" class="goodsitem">
+			 	<view class="imgbox" data-id = "{{item.id}}" bindtap="goodsxq">
+			 		<image src="{{item.images}}"></image>
+			 	</view>
+			 	<view class="name">{{item.name}}</view>
+			 	<view class="price">
+			 		<text>￥{{item.sale_price}}</text>
+			 		<image src="/img/car.png" data-gid="{{item.id}}" mode="widthFix" bindtap="addcar"></image>
+			 	</view>
+			</view>
+			<view wx:if="{{shoplist.length<=0}}" class="nodata">该店铺还没添加商品！</view>
+		</view>
+	</scroll-view>
+	<view class="footer">
+		<view class="itembox">
+			<view class="navitem" data-type="0" bindtap="isshow">
+				<image src="/img/s1.png"></image>
+				<view class="name">手艺介绍</view>
+			</view>
+			<view class="navitem" data-type="1" bindtap="isshow">
+				<image src="/img/s2.png"></image>
+				<view class="name">手艺之家</view>
+			</view>
+			<view class="navitem" data-type="2" bindtap="isshow">
+				<image src="/img/s3.png"></image>
+				<view class="name">手艺商店</view>
+			</view>
+			<view class="navitem" bindtap="telclick">
+				<image src="/img/s4.png"></image>
+				<view class="name">拨打电话</view>
+			</view>
+			<view class="navitem" bindtap="navigateclick">
+				<image src="/img/s5.png"></image>
+				<view class="name">到这里</view>
+			</view>
+		</view>
+		<view class="closeback" bindtap="closeback">
+			<image src="/img/s7.png"></image>
+		</view>
+	</view>
+	<view class="nav">
+		<view class="navli">
+			<image src="/img/navend1.png"></image>
+			<view style="color: #ff3131;">手艺人</view>
+		</view>
+		<navigator url="/pages/quan/quan" open-type="switchTab" class="navli">
+			<image src="/img/nav2.png"></image>
+			<view>手艺圈</view>
+		</navigator>
+		<navigator url="/pages/market/market" open-type="switchTab" class="navli">
+			<image src="/img/nav3.png"></image>
+			<view>手艺集市</view>
+		</navigator>
+		<navigator url="/pages/my/my" open-type="switchTab" class="navli">
+			<image src="/img/nav4.png"></image>
+			<view>我的</view>
+		</navigator>
+	</view>
+</view>
+
+<image class="mapbg" src="/img/mapbg.jpg"></image>
+ 
+	

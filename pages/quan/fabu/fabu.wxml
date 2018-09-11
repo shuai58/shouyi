@@ -1,0 +1,41 @@
+<form bindsubmit="savePersonInfo">
+	<!--<view class="title">
+	    <input placeholder="请输入标题" name="name" auto-focus/>
+	</view>-->
+	<view class="content">
+	     <textarea bindblur="bindTextAreaBlur" name="content" placeholder="请输入详细内容..." />
+	</view>
+	<view class="section2">
+		<block wx:for="{{tempFilePaths}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+		<view class="imgbox">	
+			<image class="img" bindtap="imgYu" data-src="{{i}}" src="{{i}}"></image>
+			<image class="delbtn" bindtap="deleteImg" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+		</view>
+		</block>
+		<image wx-if="{{isshow==1}}" class="img" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+	</view>
+	<view class="body">
+	    <view class="item right-icon" bindtap="moveToLocation">
+	     	<image class="icon" src="/img/postion.png"></image>
+	     	<text class="input addsty">{{positon}}</text>
+	     	<button wx-if="{{isposition==0}}" class="positionbtn" open-type="openSetting"  bindopensetting="getLocation">获取位置</button>
+	    </view>
+	    <view class="item">
+	     	<image class="icon" src="/img/phone.png"></image>
+	     	<input class="input" type="number" name="iphone" placeholder="手机号码"/>
+	    </view>
+	    <view class="item2">
+	     	<text>我要置顶</text>
+	     	<switch class="switch" checked bindchange="switchChange"/>
+	    </view>
+	    <view wx-if="{{ischeck==true}}"  class="item2">
+	     	<text>置顶天数</text>
+	     	<picker bindchange="bindPickerChange" value="{{index}}" range="{{day}}" range-key="{{'title'}}" class="right">已选择置顶天数：<text>{{day[index].title}}</text></picker>
+	    </view>
+	    <view wx-if="{{ischeck==true}}" class="item2">
+	     	<text>价格</text>
+	     	<view class="right">￥：<text>{{morey}}</text>元</view>
+	    </view>
+	</view>
+	<button formType="submit">立即发布</button>
+</form>  

@@ -1,0 +1,21 @@
+.action{display: flex; justify-content: space-between; align-items: center; line-height: 80rpx; border-bottom: 1rpx solid #f5f5f5; padding: 0 30rpx; box-sizing: border-box;}
+.action .selectbtn{display: flex; align-items: center; height: 80rpx;}
+.action .selectbtn .xuanzhe{display: block; width: 16px; height: 16px; border: 1rpx solid #ccc; margin-right: 20rpx; border-radius:30rpx;} 
+.action .selectbtn icon{margin-top: 34rpx; margin-right: 20rpx;}
+.action .del{width: 40rpx; height: 40rpx;}
+
+.jiajian{float: right; display: flex; width: 180rpx; height: 50rpx; border: 1rpx solid #eee;}
+.jiajian view{flex: 1; text-align: center; line-height:50rpx; border-right: 1rpx solid #eee; box-sizing: border-box;}
+.jiajian view:last-child{border-right: none;}
+
+.ddbox{position: relative; width: 92%; margin-left: 8%;}
+.xuanzhebtn{position: absolute; left: -8%; top: 70rpx;}
+.xuanzhebtn .xuanzhe{display: block; width: 16px; height: 16px; border: 1rpx solid #ccc; margin-right: 20rpx; border-radius:30rpx;} 
+
+.tongji{position: fixed; left: 0; bottom: 0; z-index: 99; width: 100%; height: 90rpx; border-top:1rpx solid #eee;
+ background: #fff; display:flex; justify-content: flex-end;}
+.tongji .zhifu{width: 150rpx; height: 90rpx; line-height: 90rpx; background: #ff3131; color: #fff; text-align: center;}
+.tongji .jishu{ text-align: right; padding: 10rpx 20rpx;}
+.tongji .jishu view{line-height: 35rpx;}
+.dingdan .ddbox .left .lfimg{background: #f5f5f5;}
+.kong{text-align: center; color: #999; margin-top: 140rpx;}

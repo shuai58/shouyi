@@ -1,0 +1,46 @@
+<view class="top">
+	<view class="banner"><image src="/img/mybg.jpg" mode="widthFix"></image></view>
+	<view class="conntent">
+		<block wx:if="{{!hasUserInfo && canIUse}}">
+	    <image class="logo" open-type="getUserInfo" bindgetuserinfo="getUserInfo" src="/img/touxiang3x.png" background-size="cover"></image>
+			<button class="name3" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击获取头像</button>
+	  </block>
+		<block wx:else>
+	    <image class="logo" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+			<view class="name2">{{userInfo.nickName}}</view>
+	  </block>
+	</view> 
+</view>
+
+<view class="jianjie">
+	<view class="kbox">
+	    <view class="myui-mytabbar">
+	        <view bindtap="urlclick" data-url="/pages/my/dingdan/dingdan" class="myui-tabbar__item">
+	            <image src="/img/my1.png" class="myui-tabbar__icon"></image>
+	            <view class="myui-tabbar__label">我的订单</view>
+	        </view>
+	        <view bindtap="urlclick" data-url="/pages/my/packet/packet" class="myui-tabbar__item">
+	            <image src="/img/my2.png" class="myui-tabbar__icon"></image>
+	            <view class="myui-tabbar__label">我的红包</view>
+	        </view>
+	        <view bindtap="urlclick" data-url="/pages/car/car" class="myui-tabbar__item">
+	            <image src="/img/my3.png" class="myui-tabbar__icon"></image>
+	            <view class="myui-tabbar__label">购物车</view>
+	        </view>
+	        <view bindtap="urlclick" data-url="/pages/address/address" class="myui-tabbar__item">
+	            <image src="/img/my4.png" class="myui-tabbar__icon"></image>
+	            <view class="myui-tabbar__label">收货地址</view>
+	        </view>
+	    </view>
+	</view>
+	<view class="kbox">
+	 	<view bindtap="urlclick" data-url="/pages/my/storeguanli/storeguanli" class="list"><image class="icon" src="/img/my5.png"></image>商家管理<image class="r-icon" src="/img/S-right.png"></image></view>
+	 	<view bindtap="urlclick" data-url="/pages/myfabu/myfabu" class="list"><image class="icon" src="/img/my6.png"></image>我的发布<image class="r-icon" src="/img/S-right.png"></image></view>
+	 	<view bindtap="urlclick" data-url="/pages/kaidian/kaidian" class="list"><image class="icon" src="/img/my7.png"></image>我要开店<image class="r-icon" src="/img/S-right.png"></image></view>
+	 	<view bindtap="urlclick" data-url="/pages/shouyi/shouyi" class="list"><image class="icon" src="/img/my8.png"></image>入住手艺<image class="r-icon" src="/img/S-right.png"></image></view>
+	</view>
+ 	<view bindtap="connect" class="list"><image class="icon" src="/img/my9.png"></image>联系我们<image class="r-icon" src="/img/S-right.png"></image></view>
+ 	<view bindtap="about" class="list"><image class="icon" src="/img/my10.png"></image>关于我们<image class="r-icon" src="/img/S-right.png"></image></view>
+ 	<view bindtap="urlclick" data-url="/pages/my/yijian/yijian" class="list"><image class="icon" src="/img/X3-mess.png"></image>意见反馈<image class="r-icon" src="/img/S-right.png"></image></view>
+</view>
+ 

@@ -1,0 +1,36 @@
+<view class="menu">
+	<view class="menuli" bindtap="isselect"><text class="{{isselect?'active':''}}">已上架</text></view>
+	<view class="menuli" bindtap="isselect"><text class="{{isselect?'':'active'}}">已下架</text></view>
+</view>
+
+<view wx-if="{{isselect==true}}" class="goodslist">
+	<view wx:for="{{shangjia}}" wx:key="key" class="goodsitem">
+	 	<view class="imgbox">
+	 		<image src="{{item.images}}"></image>
+	 	</view>
+	 	<view class="name">{{item.name}}</view>
+	 	<view class="price">
+	 		<text class="jiage">￥{{item.sale_price}}</text>
+	 		<view class="glbtn">
+	 			<text class="bianji" data-id="{{item.id}}" bindtap="bianji">编辑</text>
+	 			<text data-id="{{item.id}}" bindtap="xiajia">下架</text>
+	 		</view>
+	 	</view>
+	</view>
+</view>	
+
+<view wx-if="{{isselect==false}}" class="goodslist">
+	<view wx:for="{{xiajia}}" wx:key="key" class="goodsitem">
+	 	<view class="imgbox">
+	 		<image src="{{item.images}}"></image>
+	 	</view>
+	 	<view class="name">{{item.name}}</view>
+	 	<view class="price">
+	 		<text>￥{{item.sale_price}}</text>
+	 		<view class="glbtn">
+	 			<text class="del" data-id="{{item.id}}" bindtap="del">删除</text>
+	 			<text data-id="{{item.id}}" bindtap="shangjia">上架</text>
+	 		</view>
+	 	</view>
+	</view> 
+</view>	

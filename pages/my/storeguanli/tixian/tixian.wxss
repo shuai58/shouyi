@@ -1,0 +1,10 @@
+.title{text-align: center; font-size: 32rpx; font-weight: 700; margin: 20rpx 0; margin-top: 60rpx;}
+.zhichan{text-align: center; font-size: 50rpx; font-weight: 700;}
+
+.hbbg{position: fixed; left: 0; bottom: 0; z-index: 999; width: 100%; height: 100%; background:rgba(0,0,0,0.6);}
+.hbbg .zhifu{position: absolute; left: 0; bottom: 0; width: 100%; height: 400rpx; box-sizing: border-box; background: #fff;}
+.hbbg .zftop{position: relative; z-index: 99; line-height: 80rpx; padding: 0 30rpx; font-size: 30rpx}
+.hbbg .zftop text{color: #ff3131;}
+.hbbg .zftop .close{position: absolute; right: 20rpx; top: 20rpx; width: 40rpx; height: 40rpx;}
+.hbbg .zfbtn{position: absolute; left: 0; bottom: 0; width: 100%; line-height: 80rpx; background: #ff3131; color: #fff; text-align: center;}
+.hbbg .item{margin-top: 10rpx; padding: 10rpx 30rpx; border-top:1rpx solid #ddd; border-bottom:1rpx solid #ddd;}

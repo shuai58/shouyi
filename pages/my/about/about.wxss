@@ -1,0 +1,5 @@
+@import "../../../wxParse/wxParse.wxss";
+.about{ width: 100%; padding: 3%; box-sizing: border-box;background: #fff;}
+.about .xytitle{text-align: center; font-size: 32rpx; color: #333;}
+.about .xqbox{ margin: 30rpx 0; }
+.about .xqbox image{ max-width: 100%; height: auto; }

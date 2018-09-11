@@ -1,0 +1,16 @@
+<view class="title">我的资产</view>
+<view class="zhichan">￥{{real_price}}</view>
+<button class="btn" bindtap="show">提现</button>
+
+<view wx:if="{{isshow==1}}" class="hbbg">
+	<view class="zhifu">
+		<view class="zftop">
+		 	最高可提现金额：￥<text>{{real_price}}</text>
+		 	<image class="close" bindtap="close" src="/img/F-icon12x.png"></image>
+		</view>
+		<view class="item">
+			<input class="input" type="digit" bindinput="getkeyword" placeholder="请输入提现金额"/>
+		</view>
+	</view>
+	<view class="zfbtn" bindtap="tixian">立即提现</view>
+</view>

@@ -1,0 +1,27 @@
+.top{position: fixed; top: 0; left: 0; z-index: 99; width: 100%; padding: 8px 0; background: #fff;}
+.top .inputbox{position: relative; left: -30rpx; display: flex; align-items: center; width:580rpx;height: 28px; padding:0 16rpx; margin: 0 auto; font-size:28rpx;
+background: #eae8e8; line-height: 28px; border-radius:28px;}
+.top .inputbox .search-icon{ width: 36rpx; height: 36rpx; margin-left: 10rpx; margin-right: 20rpx;}
+.top .inputbox input{ width:430rpx;}
+.top .carbox{position: absolute; right:45rpx; top: 8px; font-size: 20rpx; text-align: center; color: #666;}
+.top .carbox .car-icon{width: 30rpx; height: 30rpx;}
+ 
+.goodslist{display: flex; flex-wrap: wrap; padding: 1%; padding-top: 45px;}
+.goodsitem{width: 48%; margin: 1%;}
+.goodsitem .imgbox{width: 100%; height: 350rpx;}
+.goodsitem .imgbox image{width: 100%; height: 350rpx;}
+.name{width: 96%; height: 30rpx; margin: 20rpx 0; font-size: 28rpx; color: #666; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; line-height: 30rpx; padding:0 2%;}
+.price{width: 96%; padding:0 2%; display: flex; justify-content: space-between; color: #ff3131;}
+.price image{width: 30rpx;}
+
+.shaixuanbg{position: fixed; left: 0; top:40px; z-index: 99; width: 100%; height: 100%; background: rgba(0,0,0,0.5);}
+.shaixuanbg .sxbox{width: 100%; height: 340rpx; padding: 30rpx; box-sizing: border-box; background: #fff;}
+.qjinp{display: flex; justify-content: center; align-items: center; padding: 30rpx;}
+.qjinp input{width:200rpx; border: 1rpx solid #eee; border-radius:10rpx; line-height: 80rpx; font-size: 26rpx; padding:0 20rpx;}
+.qjinp text{margin: 0 30rpx;}
+.queding{width: 200rpx; height: 60rpx; line-height: 60rpx; font-size: 24rpx; border: none; background: #ff3131; color: #fff; margin-top: 30rpx;}
+
+.nodata{width: 100%; text-align: center; margin:100rpx 0; color: #999;}
+
+.btnbox{width: 500rpx; margin: 60rpx auto; margin-top: 40rpx; display: flex; justify-content: space-between;}
+.btnbox button{height: 60rpx; line-height: 60rpx; font-size: 24rpx;}

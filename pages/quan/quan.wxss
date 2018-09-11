@@ -1,0 +1,37 @@
+.fabu {position: fixed; top: 0; left: 0; z-index: 99; width: 100%; height: 80rpx; background: #fff;
+display: flex; align-items: center; justify-content: center; border-bottom: 1rpx solid #eee;}
+.fabu image{
+  width: 30rpx;
+  height: 30rpx; margin-right:20rpx;
+}
+.fabu text{
+  font-size: 30rpx; color: #ff3131;
+}
+.list{padding: 30rpx; padding-top: 110rpx; }
+.item{display: flex; margin-bottom: 40rpx;}
+.item .headimg{margin-right: 20rpx;}
+.item .headimg image{width: 68rpx; height: 68rpx; border-radius:10rpx; margin-top: 6rpx;}
+.item .intro{width: 600rpx;}
+.item .top{display: flex; justify-content: space-between; }
+.item .top .title{width: 360rpx; font-size: 28rpx; color:#095794; padding-top: 20rpx;}
+.item .top .tel{padding: 10rpx 15rpx; height:36rpx; color: #fff; background: #ff3131; border-radius: 10rpx; margin-top:8rpx;}
+.item .top .tel image{width: 20rpx; height: 30rpx; margin-right:10rpx; vertical-align: middle; position: relative; top: -4rpx;}
+.item .intro .content{font-size: 28rpx; color: #777; line-height:32rpx; margin: 10rpx 0; margin-top: 30rpx;}
+.item .imglist{display: flex; flex-wrap: wrap;}
+.item .imglist .imgbox{display: flex; align-items: center; width: 184rpx; height: 184rpx; margin: 8rpx; background: #f1f1f1; overflow: hidden;}
+.item .imglist .imgbox image{display: block; width: 186rpx;}
+.item .address{display: flex; align-items: center; font-size: 28rpx; color: #333; padding: 10rpx 0;}
+.item .address image{ width: 32rpx; height: 32rpx; margin-right:14rpx;}
+.item .bottom{display: flex; align-items: center; justify-content: space-between; font-size: 24rpx; color: #888;}
+.item .bottom .num{display: flex; align-items: center; padding: 6rpx 0; font-size: 26rpx}
+.item .bottom .num image{width: 36rpx; height: 36rpx; margin-right:14rpx;}
+.item .bottom .num view{display: flex; align-items: center; margin-left:20rpx;}
+.item .pinglun{position: relative; background: #eee; padding: 15rpx; color: #888; margin-top: 20rpx; font-size: 24rpx; border-radius:6rpx;}
+.item .pinglun:before{content: ""; position: absolute; top: -28rpx; left: 30rpx; border: 15rpx solid #fff; border-bottom: 15rpx solid #eee;}
+.item .pinglun .pllist{ margin-bottom: 10rpx;}
+.item .pinglun .pllist .pname{color: #095794;}
+
+.ping{display: flex; position: fixed; bottom: 0; left: 0; z-index: 99; width: 100%; height: 100rpx;font-size: 30rpx; padding-left: 10rpx; line-height: 100rpx; background: #fff; border-top: 1px solid #ddd;}
+.ping .neirong{width:460rpx;  margin-top: 25rpx;}
+.ping button{width:140rpx; height: 70rpx; line-height: 70rpx; font-size: 30rpx; margin-top: 15rpx;} 
+form{display: inline-block;}
