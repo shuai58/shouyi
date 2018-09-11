@@ -1,6 +1,6 @@
 const city = require('../../utils/city.js');
 const cityObjs = require('../../utils/city.js');
-const config = require('../../utils/config.js');
+var config = require('../../utils/config.js');
 var app = getApp();
 var classdata = [];
 var indexclass = [];
