@@ -9,7 +9,7 @@ Page({
   },
   onShow: function (res) {
   	wx.setNavigationBarTitle({
-		  title:"我的"
+		  title:"我的" 
 		})
   	var that = this;
   	if (app.globalData.userInfo) {
