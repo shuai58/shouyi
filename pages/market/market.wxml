@@ -13,7 +13,7 @@
 	<block  wx:for="{{navitem}}" wx:key="key">
 	<view  data-id="{{item.id}}" bindtap="navclick" class="{{item.ison==0?'':'red'}}">{{item.title}}</view>
 	</block>
-	<view bindtap="morenav">••••••</view>
+	<view bindtap="morenav" class="morenav"><text>......</text></view>
 </view>
 <view wx:if="{{navbox2==1}}" class="navfix">
     <view class='boxitem'>

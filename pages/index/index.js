@@ -514,12 +514,11 @@ Page({
 					}
 					console.log(classdata)
 					that.getSchoolMarkers()
-					wx.showModal({
-					  title: '友情提示',
-					  content: '点击地图头像,可了解更多手艺人信息！',
-					  showCancel:false,
-					  success: function(res) {}
-					})
+                    wx.showToast({
+                        title: '点击地图头像,可了解更多手艺人信息！',
+                        icon: 'none',
+                        duration: 2000
+                    })
 				})	
 			}
 				

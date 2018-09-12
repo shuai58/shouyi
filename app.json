@@ -48,7 +48,7 @@
     	"iconPath":"img/nav1.png",
     	"selectedIconPath":"img/navend1.png",
       "pagePath": "pages/index/index",
-      "text": "首页"
+      "text": "手艺人"
     },{
     	"iconPath":"img/nav2.png",
     	"selectedIconPath":"img/navend2.png",
