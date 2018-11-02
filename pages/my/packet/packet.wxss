@@ -1,0 +1,17 @@
+.hongbao {position: relative; width: 80%; height: 260rpx; margin: 30rpx auto;}
+.hongbao .hbg{position: absolute; left: 0; top: 0; z-index: 0; width: 100%; height: 100%;}
+.hongbao .packet{position: absolute; right: 0; top: 0; z-index: 9; width: 72%; padding: 3%; 
+height: 100%; box-sizing: border-box; text-align: center;}
+.hongbao .packet .top{ width: 100%; height: 150rpx; text-align: center; }
+.hongbao .packet .top2{ width: 100%; height: 140rpx; text-align: center; padding-top: 20rpx;}
+.hongbao .packet .time{width: 100%; height: 45rpx; line-height: 45rpx; font-size: 26rpx; text-align: center; }
+.hongbao .red{color: #ff3131;}
+.hongbao .blue{color: #0060db;}
+.hongbao .packet .shopname{width: 100%;height: 60rpx; line-height: 60rpx; font-size: 32rpx; margin:10rpx 0;}
+.hongbao .packet .rulue{display: flex; align-items: center; flex-wrap: wrap; width: 100%; line-height: 60rpx; }
+.hongbao .packet .rulue .price{width: 100%; font-size: 30rpx; }
+.hongbao .packet .rulue .price text{ font-size: 36rpx; font-weight: 700;}
+.hongbao .packet .rulue .siyong{width: 100%; font-size: 30rpx;}
+.hongbao .packet .rulue .siyong text{ font-size: 36rpx; font-weight: 700;}
+
+.tishi{width: 100%; margin: 150rpx 0; color: #999; text-align: center;}

@@ -1,0 +1,56 @@
+<view class="fabu" bindtap="fabu">
+	<image src="../../img/fabu.png"></image>
+	<text>点击发布</text>
+</view> 
+
+<view class="list">
+	<view wx:for="{{circleList}}" wx:key="key" class="item" bindtouchstart="close">
+		<view class="headimg">
+			<image src="{{item.avatar}}"></image>
+		</view>
+		<view class="intro">
+			<view class="top">
+				<view class="title">{{item.nickname}}</view>
+				<view class="tel">
+					<image src="/img/icon-tel.png"></image>
+					<text data-uid="{{item.uid}}" bindtap="call">拨打电话</text>
+				</view>	
+			</view>
+			<view class="content">
+				{{item.content}}
+			</view>
+			<view class="imglist">
+				<view wx:for="{{item.image}}" wx:for-item="img" wx:key="key" class="imgbox">
+					<image bindtap="imgYu" data-yu="{{item.image}}" data-src="{{img}}" src="{{img}}" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="address">
+				<image src="/img/postion.png"></image>
+				<text>{{item.locations}}</text>
+			</view>
+			<view class="bottom">
+				<text>{{item.reftime}}</text>
+				<view class="num">
+					<view data-cid="{{item.id}}" data-isPraise="{{item.isPraise}}" bindtap="praisebtn"><image src="{{item.isPraise==0?'/img/icon-zan.png':'/img/icon-zanend.png'}}"></image>{{item.praise}}</view>
+					<view data-cid="{{item.id}}" data-oid="{{item.uid}}" catchtap="pinglun"><image src="/img/icon-pl.png"></image>{{item.replynum}}</view>
+				</view>
+			</view>
+			<view wx:if="{{item.reply.length>0}}" class="pinglun"> 
+				<view wx:for="{{item.reply}}" wx:key="key" class="pllist">
+					<text class="pname">{{item.uname}}：</text>
+					<text>{{item.content}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{isdisplay==1}}" style="height:50rpx;"></view>
+<form wx:if="{{isdisplay==1}}" bindsubmit="sendbtn">
+	<view class="ping">
+		评论：
+		<input class="neirong" name="content" type="text" bindconfirm="sendbtn" focus='ture' />
+		<button formType="submit">提交</button>
+	</view>
+</form>
+ 

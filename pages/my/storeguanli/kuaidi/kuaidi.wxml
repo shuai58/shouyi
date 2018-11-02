@@ -1,0 +1,19 @@
+<form bindsubmit="savePersonInfo">
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">快递价格<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" name="c_price" value="{{c_price}}" placeholder="请输入运费价格" type="digit"/>
+    </view>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">满减运费</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" name="rules" value="{{rules}}" placeholder="请输入满减价格（不填默认免运费）" type="digit"/>
+    </view>
+</view>
+<button class="btn" formType="submit">提交</button>
+</form>  

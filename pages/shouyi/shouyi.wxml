@@ -1,0 +1,91 @@
+<form bindsubmit="savePersonInfo">
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">手艺名称<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" name="title" type="text" value="{{title}}"/>
+    </view>
+</view>
+<picker class="weui-cell" bindchange="bindPickerChange" value="{{index}}" range="{{classarray}}">
+	<view class="picker weui-cell__ft">
+    	<view><text style="color: #333;">手艺类型</text><image class="xing" src="/img/xing.png"></image></view>
+    	<text>{{classarray[index]}}</text>
+    </view>
+</picker>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">联系电话<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" name="tel" type="text" value="{{tel}}"/>
+    </view>
+</view>
+<view class="weui-cell" bindtap="translate">
+    <view class="weui-cell__bd">
+        <text>联系地址</text><image class="xing" src="/img/xing.png"></image>
+    </view> 
+    <view class="weui-cell__ft">{{adder.province}} {{adder.city}} {{adder.county}}</view>
+</view>
+<view class="weui-cell" bindtap="moveToLocation">
+    <view class="weui-cell__bd">
+        <text>商家坐标</text><image class="xing" src="/img/xing.png"></image>
+    </view> 
+    <view class="weui-cell__ft">{{mark.lat}} {{mark.lon}}</view> 
+    <button wx-if="{{isposition==0}}" class="positionbtn" open-type="openSetting"  bindopensetting="getLocation"></button>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">手艺介绍<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+</view>
+<view class="section2">
+	 <textarea wx:if="{{isxieyi==0}}" class="text" name="abstract" placeholder="请输入手艺项目及个人介绍" value="{{abstract}}"></textarea>
+</view> 
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view>商家LOGO<image class="xing" src="/img/xing.png"></image><text class="tishi">(建议尺寸1:1)</text></view>
+    </view>
+</view>
+<view class="section2">
+	<block wx:for="{{tempFilePaths1}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" data-type="1" data-yu="{{tempFilePaths1}}" bindtap="imgYu" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" data-type="1" bindtap="deleteImg" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<block wx:for="{{tempFilePaths4}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" data-type="4" data-yu="{{tempFilePaths4}}" bindtap="imgYu" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" data-type="4" bindtap="deleteImg" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<image wx-if="{{isshow1==1}}" class="img" data-type="1" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+</view> 
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view>手艺之家<image class="xing" src="/img/xing.png"></image><text class="tishi">(名店，工作室照片)</text></view>
+    </view>
+</view>
+<view class="section2">
+	<block wx:for="{{tempFilePaths3}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" data-type="3" bindtap="imgYu" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" data-type="3" data-yu="{{tempFilePaths3}}" bindtap="deleteImg" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<block wx:for="{{tempFilePaths2}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" data-type="2" data-yu="{{tempFilePaths2}}" bindtap="imgYu" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" data-type="2" bindtap="deleteImg" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<image wx-if="{{isshow2==1}}" class="img" data-type="2" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+</view> 
+
+<button formType="submit">提交</button>
+</form> 
+<import src="/model/model.wxml"/>
+<template is="areaData" data="{{...item}}"/>
+ 
+ 

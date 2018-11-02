@@ -1,0 +1,27 @@
+ 
+<view wx:for="{{packet}}" wx:key="key" class="hongbao"> 
+	<image wx:if="{{item.shop_id==0}}" class="hbg" src="/img/packet1.png"></image>
+	<image wx:else class="hbg" src="/img/packet2.png"></image>
+	<view wx:if="{{item.shop_id==0}}" class="packet red">
+		<view class="top2">
+			<view class="rulue">
+				<view class="price"><text>{{item.price}} 元</text></view>
+				<view wx:if="{{item.rule<=0}}" class="siyong"><text>无门槛</text></view>
+				<view wx:else class="siyong">满<text> {{item.rule}} </text>元可用</view>
+			</view>
+		</view>
+		<view class="time red">有效期至 {{item.overtime}}</view>
+	</view>
+	<view wx:else class="packet blue">
+		<view class="top">
+			<view class="shopname blue">{{item.shop_name}}</view>
+			<view class="rulue">
+				<view wx:if="{{item.rule<=0}}" class="price"><text>{{item.price}}</text> 元<text> 无门槛</text></view>
+				<view wx:else class="price"><text>{{item.price}}</text> 元 满 <text>{{item.rule}}</text> 元可用</view>
+			</view>
+		</view>
+		<view class="time">有效期至 {{item.overtime}}</view>
+	</view>
+</view>
+<view wx:if="{{packet.length<=0}}" class="tishi">暂无红包！</view> 
+ 

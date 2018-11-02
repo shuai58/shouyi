@@ -1,0 +1,21 @@
+<view class="pingfen">
+	<block wx:for="{{5}}" wx:for-index="index" wx:key="key">
+	<image wx:if="{{index < score}}" data-index="{{index}}" bindtap="starclick" src="/img/star.png"></image>
+	<image wx:else data-index="{{index}}" bindtap="starclick" src="/img/star2.png"></image>
+	</block>
+</view>
+<view class="content">
+     <textarea bindinput="bindTextAreaBlur" placeholder="请输入详细内容..." />
+</view>
+<view class="section2">
+	<block wx:for="{{tempFilePaths}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" bindtap="imgYu" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" bindtap="deleteImg" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<image wx-if="{{isshow==1}}" class="img" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+</view>
+ 
+<button bindtap="save">立即评价</button>
+ 

@@ -1,0 +1,99 @@
+<view class="menu position">
+	<view class="menuli" data-id="0" bindtap="isselect"><text class="{{isselect==0?'active':''}}">已完成</text></view>
+	<view class="menuli" data-id="1" bindtap="isselect"><text class="{{isselect==1?'active':''}}">待付款</text></view>
+	<view class="menuli" data-id="2" bindtap="isselect"><text class="{{isselect==2?'active':''}}">待发货 </text></view>
+	<view class="menuli" data-id="3" bindtap="isselect"><text class="{{isselect==3?'active':''}}">待收货</text></view>
+	<view class="menuli" data-id="4" bindtap="isselect"><text class="{{isselect==4?'active':''}}">待评价</text></view>
+	<view class="menuli" data-id="5" bindtap="isselect"><text class="{{isselect==5?'active':''}}">退款</text></view> 
+</view>
+<view class="padding-top-70">
+	<view wx:for="{{dingdan}}" wx:key="key" class="dingdan">
+		<view class="shop">
+			<view class="nameimg">
+				<image src="{{item.shop_img}}"></image>
+				<text>{{item.shop_name}}</text>
+			</view>
+			<view wx:if="{{item.statu==0&&item.is_refund==0}}" class="staus">待付款</view>
+			<view wx:if="{{item.statu==1&&item.is_delivery==0&&item.is_refund==0}}" class="staus">待发货</view>
+			<view wx:if="{{item.statu==1&&item.is_delivery==1&&item.is_refund==0}}" class="staus">待收货</view>
+			<view wx:if="{{item.is_refund==1}}" class="staus">等待退款</view>
+			<view wx:if="{{item.statu==4&&item.is_refund==2}}" class="staus" style="color: #999;">退款成功</view>
+			<view wx:if="{{item.statu==4&&item.is_refund!=2}}" class="staus">交易完成</view>
+		</view>
+		<view wx:for="{{item.group}}" wx:key="key"  wx:for-item="item2" class="ddbox">
+			<view class="left">
+				<view class="lfimg">
+					<image src="{{item2.image}}" mode="widthFix"></image>
+				</view>
+			</view> 
+			<view class="right">
+				<view class="top">
+					<view class="intro">
+						<view class="name">{{item2.s_name}}</view>
+						<view class="guige">{{item2.rule_name}}</view>
+					</view>
+					<view class="pricenum">
+						<view class="price">￥{{item2.unit_price}}</view>
+						<view class="num">x<text>{{item2.num}}</text></view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view wx:if="{{item.s_packet>0}}" class="weui-cell mycell">
+		    <view class="weui-cell__bd">抵用店铺红包 </view> 
+		    <view class="weui-cell__ft2">抵用红包￥{{item.s_packet}}</view>
+		</view>
+		<view  wx:if="{{item.packet>0}}" class="weui-cell mycell">
+		    <view class="weui-cell__bd">抵用平台红包 </view> 
+		    <view class="weui-cell__ft2">抵用红包￥{{item.packet}}</view>
+		</view>
+		<view class="heji">
+			<text>共{{item.gong_num}}件商品</text>
+			合计：￥{{item.real_price}}
+			<text wx:if="{{item.c_price<=0}}">（免运费）</text>
+			<text wx:else>（含运费￥{{item.c_price}}）</text>
+		</view>
+		<view class="bottom">
+			<view data-dingdan="{{item}}" bindtap="pay" wx:if="{{item.statu==0}}">去付款</view>
+			<view data-id="{{item.id}}" bindtap="quxiao" wx:if="{{item.statu==0}}">取消订单</view>
+			<navigator url="/pages/my/yijian/yijian?oid={{item.id}}&&shop_id={{item.shop_id}}" wx:if="{{item.statu==1&&item.is_delivery==0&&item.is_refund==0}}">申请退款</navigator>
+			<view wx:if="{{item.statu==1&&item.is_delivery==0&&item.is_refund==0}}">等待卖家发货</view>
+			<navigator url="/pages/my/wuliu/wuliu?oid={{item.id}}&&mailno={{item.courier}}" wx:if="{{item.statu==1&&item.is_delivery==1}}">查看物流</navigator>
+			<view data-id="{{item.id}}" data-gid="{{item.group}}" bindtap="putAffirm" wx:if="{{item.statu==1&&item.is_delivery==1}}">确认收货</view>
+			<view wx:if="{{item.is_refund==1}}">等待确认退款</view>
+			<view data-id="{{item.id}}" bindtap="putRecall" wx:if="{{item.is_refund==1}}">取消退款</view>
+			<view data-id="{{item.id}}" bindtap="del" wx:if="{{item.statu==4}}">删除记录</view>
+			<view data-id="{{item.id}}" data-gid="{{item.group}}" bindtap="pingjia" wx:if="{{item.statu==4&&item.is_evaluate==0&&item.is_refund==0}}">去评价</view>
+			<view wx:if="{{item.statu==4&&item.is_evaluate==1}}">已评价</view>
+		</view>
+	</view>
+</view>
+<view wx:if="{{dingdan.length<=0}}" class="tishi">暂无记录！</view>  
+
+<view wx:if="{{zhifu==1}}" class="hbbg">
+	<view class="zhifu">
+		<view class="zftop">
+		 	应支付：￥<text>{{payprice}}</text>
+		 	<image class="close" bindtap="close" src="/img/F-icon12x.png"></image>
+		</view>
+		<view class="weui-cell" bindtap="hongbao">
+		    <view class="weui-cell__bd">抵用手艺人红包 </view> 
+		    <view wx:if="{{packet>0}}" class="weui-cell__ft">抵用手艺人红包￥{{packet}}</view>
+		    <view wx:else class="weui-cell__ft">暂无可用红包</view>
+		</view>
+	</view>
+	<view class="zfbtn" bindtap="gopay">立即支付</view>
+	<view wx:if="{{hongbao==1}}" class="hbbox">
+		<image class="close" bindtap="close2" src="/img/F-icon12x.png"></image>
+		<view wx:if="{{hongbaoli.length<=0}}" class="hblist">无可用红包</view>
+		<view wx:for="{{hongbaoli}}" wx:key="key" wx:for-index="idx" data-index="{{idx}}" bindtap="hbxz" class="hblist {{item.isxx==0?'':'xz'}}">
+			<view>
+				<text class="red">￥{{item.price}}</text>
+				<text wx:if="{{item.rule>0}}">满{{item.rule}}元可用</text>
+				<text wx:if="{{item.rule<=0}}">无门槛</text>
+			</view>
+			<view class="sj"><text>{{item.overtime}}</text>过期</view>
+		</view>
+	</view>
+</view>
+ 

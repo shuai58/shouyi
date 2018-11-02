@@ -1,0 +1,8 @@
+<view class="group">
+    <icon type="warn" color="red" size="80"/>
+	<view class="title">微信授权</view>
+	<view class="p">由于小程序需要授权获取个人信息，请点击按钮同意授权登录</view>
+</view>
+
+<button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">我要授权</button>
+ 

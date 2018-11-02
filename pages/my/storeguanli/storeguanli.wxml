@@ -1,0 +1,7 @@
+
+<navigator url="/pages/my/storeguanli/upgoods/upgoods" class="list"><image class="icon" src="/img/g2.png"></image>上传商品<image class="r-icon" src="/img/S-right.png"></image></navigator>
+<navigator url="/pages/my/storeguanli/guanli/guanli" class="list"><image class="icon" src="/img/g1.png"></image>商品管理<image class="r-icon" src="/img/S-right.png"></image></navigator>
+<navigator url="/pages/my/storeguanli/storedingdan/storedingdan" class="list"><image class="icon" src="/img/my7.png"></image>订单管理<image class="r-icon" src="/img/S-right.png"></image></navigator>
+<navigator url="/pages/my/storeguanli/kuaidi/kuaidi" class="list"><image class="icon" src="/img/kuaidi.png"></image>快递价格管理<image class="r-icon" src="/img/S-right.png"></image></navigator> 
+<navigator url="/pages/my/storeguanli/tixian/tixian" class="list"><image class="icon" src="/img/my12.png"></image>我的资产<image class="r-icon" src="/img/S-right.png"></image></navigator> 
+<navigator url="/pages/my/storeguanli/jilu/jilu" class="list"><image class="icon" src="/img/my11.png"></image>提现记录<image class="r-icon" src="/img/S-right.png"></image></navigator>

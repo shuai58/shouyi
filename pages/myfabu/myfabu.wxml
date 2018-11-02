@@ -1,0 +1,74 @@
+<view class="fabu" bindtap="fabu">
+	<image src="../../img/fabu.png"></image>
+	<text>点击发布</text>
+</view> 
+
+<view class="list">	
+	<view wx:for="{{circleList}}" wx:key="key" class="item" bindtouchstart="close">
+		<view class="headimg">
+			<image src="{{item.avatar}}"></image>
+		</view>
+		<view class="intro">
+			<view class="btnbox">
+				<view data-cid="{{item.id}}" bindtap="delbtn" style="background: #ff0000;">删除</view>
+				<view data-cid="{{item.id}}" bindtap="refebtn" style="background: #1d2088;">刷新消息日期</view>
+				<view style="background: #fd743f;" data-cid="{{item.id}}" bindtap="zhiding">{{item.isTop==1?"置顶中":"置顶"}}</view>
+			</view>
+			<!--<view class="top">
+				<view class="title">{{item.nickname}}</view>
+			</view>-->
+			<view class="content">
+				{{item.content}}
+			</view>
+			<view class="imglist">
+				<view wx:for="{{item.image}}" wx:for-item="img" wx:key="key" class="imgbox">
+					<image bindtap="imgYu" data-yu="{{item.image}}" data-src="{{img}}" src="{{img}}" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="address">
+				<image src="/img/postion.png"></image>
+				<text>{{item.locations}}</text>
+			</view>
+			<view class="bottom">
+				<text>{{item.reftime}}</text>
+				<view class="num">
+					<view><image data-cid="{{item.id}}" data-isPraise="{{item.isPraise}}" bindtap="praisebtn" src="{{item.isPraise==0?'/img/icon-zan.png':'/img/icon-zanend.png'}}"></image>{{item.praise}}</view>
+					<view><image data-cid="{{item.id}}" data-oid="{{item.uid}}" catchtap="pinglun" src="/img/icon-pl.png"></image>{{item.replynum}}</view>
+				</view>
+			</view>
+			<view wx:if="{{item.reply.length>0}}" class="pinglun"> 
+				<view wx:for="{{item.reply}}" wx:key="key" class="pllist">
+					<text class="pname">{{item.uname}}：</text>
+					<text>{{item.content}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{isdisplay==1}}" style="height:50rpx;"></view>
+<form wx:if="{{isdisplay==1}}" bindsubmit="sendbtn">
+	<view class="ping">
+		评论：
+		<input class="neirong" name="content" type="text" />
+		<button formType="submit">提交</button>
+	</view>
+</form>
+
+<view wx:if="{{iszhiding==1}}" class="zhiding">
+	<view class="body">
+	    <view class="item2">
+	     	<text>置顶天数</text>
+	     	<picker bindchange="bindPickerChange" value="{{index}}" range="{{day}}" range-key="{{'title'}}" class="right">已选择置顶天数：<text>{{day[index].title}}</text></picker>
+	    </view>
+	    <view class="item2">
+	     	<text>价格</text>
+	     	<view class="right">￥：<text>{{morey}}</text>元</view>
+	    </view>
+	    <view class="btnbox">
+	    	<button bindtap="quxiao">取消</button>
+	    	<button type="primary"  bindtap="queding">确定</button>
+	    </view>
+	</view>
+</view>
+ 

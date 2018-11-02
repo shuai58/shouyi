@@ -1,0 +1,8 @@
+<view wx:for="{{jilu}}" wx:key="key" class="jilu">
+	<view class="top">
+		<text class="moeny">￥{{item.applys}}</text>
+		<text wx:if="{{item.state==0}}" class="red">待打款</text>
+		<text wx:if="{{item.state==1}}" class="gray">已打款</text>
+	</view>
+	<view class="time">提款时间 {{item.addtime}}</view>
+</view>

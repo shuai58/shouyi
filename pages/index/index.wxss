@@ -1,0 +1,222 @@
+.diqu{position: fixed; top: 0; left: 0; z-index: 99; width: 100%; text-align: center; padding: 8px 0; background: #fff;}
+.diqu .diqubox{ display: flex; align-items: center; width:170rpx; padding:0 16rpx; margin: 0 auto; font-size:28rpx;
+background: #fcdede; height: 28px; line-height: 28px;}
+.diqu .diqubox .logo{ width: 20rpx; height: 30rpx;}
+.diqu .diqubox text{display: block; margin:0 10rpx; width: 130rpx; height:28px; 
+overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.diqu .diqubox button{display: block; margin:0 10rpx; width: 130rpx; height:28px; 
+overflow: hidden; white-space: nowrap; text-overflow: ellipsis;  background: none;border-color: #fcdede; padding: 0; 
+font-size: 12px; line-height: 28px; color: #333;}
+.diqu .diqubox .icon-xia{ width: 20rpx; height: 12rpx;}
+.addnav{position: absolute; right:80rpx; top: 4px; font-size: 24px; font-weight: 700;}
+.back{position: absolute; left:10rpx; top: 4px; font-size: 50rpx; transform: scaleY(0.6);width: 40rpx; }
+.navli{position: absolute; right:0rpx; top: 36px; width: 200rpx; line-height: 32px; font-size: 26rpx; background: #373a41; color: #fff;}
+.navli view{ border-bottom: 1rpx solid #161920;}
+
+.navbox{display: flex; flex-wrap: wrap; padding-bottom: 6px; margin-top: 44px;}
+.navbox view{width: 23%; padding: 0 1%; text-align: center; font-size:28rpx; line-height: 26px;color: #6a6a6a;}
+.navbox .red{color: #ff3131;}
+.navbox2{margin-top: 44px;}
+.navbox2 view{padding: 0 30rpx; text-align: left; font-size:28rpx; border-bottom: 1rpx solid #eee; line-height: 80rpx;color: #6a6a6a;}
+
+.selectbox{position: fixed; top: 0; left: 0; z-index: 999; width: 100%; height: 100%; background: #fff;}
+.container-inner {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx;
+
+}
+
+input {
+  text-align: center;
+  font-size: 32rpx;
+  padding: 5px;
+}
+
+.searchLetter {
+  flex-shrink: 0;
+  width: 80rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: #666;
+}
+
+.searchLetter view {
+  margin-top: 20rpx;
+}
+
+.touchClass {
+  background-color: #fff;
+  color: #fff;
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+}
+
+.showSlectedLetter {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -100rpx;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+  font-size: 52rpx;
+  z-index: 1;
+}
+
+.selection {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 10rpx;
+}
+
+.selectCity {
+  padding: 16rpx;
+  background-color: #f5f5f5;
+  margin-bottom: -10rpx;
+}
+
+.item_letter {
+  display: flex;
+  background-color: #f5f5f5;
+  height: 40rpx;
+  padding-left: 34rpx;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.item_city {
+  display: flex;
+  background-color: #fff;
+  height: 100rpx;
+  padding-left: 34rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #ededed;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.hotcity-common {
+  font-size: 24rpx;
+  color: #666;
+  padding-bottom: 0;
+  margin: 8rpx 0;
+  margin-left: 16rpx;
+}
+
+.hotCity {
+  padding-right: 50rpx;
+  margin: auto;
+}
+
+.thisCityName {
+  display: inline-block;
+  border: 1rpx solid #8BC34A;
+  border-radius: 8rpx;
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  color: #8BC34A;
+  text-align: center;
+  min-width: 149.5rpx;
+  margin: 16rpx 0;
+}
+
+.thishotText {
+  color: #8BC34A;
+  font-size: 20rpx;
+  margin: 0 !important;
+}
+
+.slectCity {
+  border-color: #8BC34A !important;
+}
+
+.slectCity view {
+  color: #8BC34A !important;
+}
+
+.weui-grid {
+  padding: 10rpx 0;
+  width: 200rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #ececec;
+  border-radius: 8rpx;
+  background-color: white;
+  margin: 8rpx 0;
+}
+
+.weui-grids {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.weui-grid__label {
+  display: block;
+  text-align: center;
+  color: #333;
+  font-size: 24rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ul {
+  display: block;
+  color: grey;
+  margin-left: 20rpx;
+}
+
+.li {
+  display: block;
+  font-weight: 100;
+  font-size: 28rpx;
+  padding: 16rpx 0;
+}
+
+input {
+  background-color: #eee;
+}
+
+.input {
+	display: flex;
+  padding: 16rpx;
+  border-bottom: 1rpx solid #f1f1f1;
+  align-items: center;
+}
+.sback{ font-size: 50rpx; transform: scaleY(0.6);width: 40rpx; margin-right: 30rpx;}
+.input input{width: 600rpx;}
+.county {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.coverbox{position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; background: rgba(0,0,0,0.6);}
+.box{padding-top:260rpx; padding-bottom: 160rpx;}
+.head{position: fixed; top: 0; left: 0; z-index: 99; width: 100%; padding-bottom: 20rpx; text-align: center;}
+.storename{font-size: 36rpx;color: #fff; margin: 20rpx 0; margin-top: 30rpx;}
+.storeimg cover-image{display: inline-block; width: 150rpx; height: 150rpx; border-radius:150rpx ;}
+
+.storeintro {height: 600rpx; width: 94%;white-space: normal; margin: 0 auto; padding:30rpx 0; overflow-y: scroll;}
+.storeintro .p{white-space: normal; font-size: 28rpx; line-height: 40rpx; color: #fff; text-align: justify; padding-bottom: 10rpx;}
+
+.footer{position: absolute; bottom: 0; left: 0; z-index: 99; width: 100%; display: flex; padding:20rpx 0;}
+.footer .itembox{ display: flex; width: 88%; margin-left: 1%;}
+.footer .navitem{flex: 1; text-align: center; font-size: 26rpx;}
+.footer .navitem cover-image{display: inline-block; width: 60rpx; height: 60rpx;}
+.footer .navitem .name{margin:10rpx auto; color: #fff;}
+.footer .closeback cover-image{width: 60rpx; height: 60rpx; margin-left: -2%;}

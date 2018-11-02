@@ -1,0 +1,89 @@
+<navigator url="/pages/address/address" class="top2">
+	<image src="/img/s5.png"></image> 
+	<view class="rgbox">
+		<view class="shouhuo">
+			<view>收货人：{{address.people}}</view>
+			<view>{{address.iphone}}</view>
+		</view>
+		[收货地址] {{address.adder.province}}{{address.adder.city}}{{address.adder.county}}{{address.adder.detail}}
+	</view>
+</navigator>
+<view style="padding-bottom: 90rpx;">
+	<view wx:for="{{datalist}}" wx:key="key" wx:for-item="itemName" class="dingdan">
+		<view class="shop">
+			<view class="nameimg">
+				<image src="{{itemName.shop_img}}"></image>
+				<text>{{itemName.shop_name}}</text>
+			</view>
+		</view>
+		<view wx:for="{{itemName.group}}" wx:key="key" class="ddbox">
+			<view class="left">
+				<view class="lfimg">
+					<image src="{{item.image}}" mode="widthFix"></image>
+				</view>
+			</view> 
+			<view class="right">
+				<view class="top">
+					<view class="intro">
+						<view class="name">{{item.s_name}}</view>
+						<view class="guige">{{item.rule_name}}</view>
+					</view>
+					<view class="pricenum">
+						<view class="price">￥{{item.unit_price}}</view>
+						<view class="num">x<text>{{item.num}}</text></view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="weui-cell mycell">
+		    <view class="weui-cell__bd">配送方式</view> 
+		    <view wx:if="{{itemName.c_price<=0}}" class="weui-cell__ft2">免运费 </view>
+		    <view wx:if="{{itemName.c_price>0}}" class="weui-cell__ft2">快递（运费￥{{itemName.c_price}}） </view>
+		</view>
+		<view class="weui-cell mycell" data-shopid="{{itemName.shop_id}}" bindtap="hongbao">
+		    <view class="weui-cell__bd">店铺红包 </view> 
+		    <view wx:if="{{itemName.s_packet>0}}" class="weui-cell__ft">抵用店铺红包￥{{itemName.s_packet}}</view>
+		    <view wx:else class="weui-cell__ft">暂无可用红包</view>
+		</view>
+		<view class="weui-cell mycell">
+		    <view class="weui-cell__hd">
+		    	<view class="weui-label">买家留言</view>
+		    </view>
+		    <view class="weui-cell__bd">
+		        <input class="weui-input" bindinput="getkeyword" data-shopid="{{itemName.shop_id}}" type="text" placeholder="填写已和卖家商定的留言"/>
+		    </view>
+		</view>
+		<view class="heji">
+			<text>共{{itemName.gong_num}}件商品</text>合计：￥{{itemName.handle_price}}
+		</view>
+	</view>
+	<view class="hongbao">
+		<view class="weui-cell" data-shopid="0" bindtap="hongbao">
+		    <view class="weui-cell__bd">手艺人红包 </view> 
+		    <view wx:if="{{packet>0}}" class="weui-cell__ft">抵用手艺人红包￥{{packet}}</view>
+		    <view wx:else class="weui-cell__ft">暂无可用红包</view>
+		</view>
+	</view>
+</view>
+
+<view class="tongji">
+	<view class="jishu">
+		<view>合计：￥{{hejiprice}}</view>
+	</view>
+	<view class="zhifu" bindtap="tijiao">提交订单</view>
+</view>
+
+<view wx:if="{{hongbao==1}}" class="hbbg">
+	<view class="hbbox">
+		<image class="close" bindtap="close" src="/img/F-icon12x.png"></image>
+		<view wx:if="{{hongbaoli.length<=0}}" class="hblist">无可用红包</view>
+		<view wx:for="{{hongbaoli}}" wx:key="key" wx:for-index="idx" data-shopid="{{item.shop_id}}" data-index="{{idx}}" bindtap="hbxz" class="hblist {{item.isxx==0?'':'xz'}}">
+			<view>
+				<text class="red">￥{{item.price}}</text>
+				<text wx:if="{{item.rule>0}}">满{{item.rule}}元可用</text>
+				<text wx:if="{{item.rule<=0}}">无门槛</text>
+			</view>
+			<view class="sj"><text>{{item.overtime}}</text>过期</view>
+		</view>
+	</view>
+</view>

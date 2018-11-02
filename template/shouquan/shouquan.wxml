@@ -1,0 +1,13 @@
+<template name="tishi">
+  <view wx:if="{{istrue==1}}" class="js_dialog" style="opacity: 1;">
+	    <view class="weui-mask"></view>
+	    <view class="weui-dialog">
+	        <view class="weui-dialog__hd"><view class="weui-dialog__title">微信授权</view></view>
+	        <view class="weui-dialog__bd">需要获取你的昵称、头像等信息以便更好的为你服务</view>
+	        <view class="weui-dialog__ft">
+	            <text class="weui-dialog__btn weui-dialog__btn_default" bindtap="quxiao">取消</text>
+	            <button open-type="getUserInfo" class="weui-dialog__btn weui-dialog__btn_primary" bindgetuserinfo="queding">确定</button>
+	        </view>
+	    </view>
+	</view>
+</template>

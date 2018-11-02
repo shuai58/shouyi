@@ -1,0 +1,17 @@
+<view class="pingjia">
+	<view class="plitem">
+	 	<view class="content">
+	 		{{showdata.content}}
+	 	</view>
+	 	<view class="plimg">
+ 			<view  wx:for="{{showdata.image}}" wx:key="key" class="picbox">
+ 				<image src="{{item}}" bindtap="imgYu" data-yu="{{showdata.image}}" data-src="{{item}}" mode="widthFix"></image>
+ 			</view>
+ 		</view>
+	</view>
+</view>
+
+<view class="istongyi">
+	<view bindtap="istongyi" data-type="2" class="red">拒绝</view>
+	<view bindtap="istongyi" data-type="1" class="green">同意</view>
+</view>

@@ -1,0 +1,123 @@
+<form bindsubmit="savePersonInfo">
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">真实姓名<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" type="text" name="realname" placeholder="请输入真实姓名" value="{{realname}}"/>
+    </view>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">店铺名称<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" type="text" name="shop_name" value="{{shop_name}}" placeholder="店铺名称"/>
+    </view>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">商家电话<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" type="text" name="iphone" value="{{iphone}}" placeholder="商家电话"/>
+    </view>
+</view>
+<view class="weui-cell" bindtap="translate">
+    <view class="weui-cell__bd">
+        <text>商家地址</text><image class="xing" src="/img/xing.png"></image>
+    </view> 
+    <view class="weui-cell__ft">{{adder.province}} {{adder.city}} {{adder.county}}</view>
+</view>
+<view class="weui-cell" bindtap="moveToLocation">
+    <view class="weui-cell__bd">
+        <text>商家坐标</text><image class="xing" src="/img/xing.png"></image>
+    </view> 
+    <view class="weui-cell__ft">{{mark.lat}} {{mark.lon}}</view>
+    <button wx-if="{{isposition==0}}" class="positionbtn" open-type="openSetting"  bindopensetting="getLocation"></button>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">银行卡号<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" type="number" name="card_number" value="{{card_number}}" placeholder="请输入银行卡号"/>
+    </view>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">开户行名称</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" type="text" name="adder_card" value="{{adder_card}}" placeholder="请输入开户行名称"/>
+    </view>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">商家LOGO<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+</view>
+<view class="section2">
+	<block wx:for="{{tempFilePaths1}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" bindtap="imgYu" data-yu="{{tempFilePaths1}}" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" bindtap="deleteImg" data-type="1" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<image wx-if="{{isshow1==1}}" class="img" data-type="1" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+</view> 
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">营业执照</view>
+    </view>
+</view>
+<view class="section2">
+	<block wx:for="{{tempFilePaths2}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" bindtap="imgYu" data-yu="{{tempFilePaths2}}" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" bindtap="deleteImg" data-type="2" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<image wx-if="{{isshow2==1}}" class="img" data-type="2" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+</view> 
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">身份证信息<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+</view>
+<view class="shefenzheng">
+	<view class="sfzbox" data-type="3" bindtap="uploadImage">
+		<view>省份证 正面</view>
+		<block wx:for="{{tempFilePaths3}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+		<view class="sfzimg">
+			<image class="img" src="{{i}}"></image>
+		</view>
+		</block>
+	</view>
+	<view class="sfzbox" data-type="4" bindtap="uploadImage">
+		<view>省份证 反面</view>
+		<block wx:for="{{tempFilePaths4}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+		<view class="sfzimg">
+			<image class="img" src="{{i}}"></image>
+		</view>
+		</block>
+	</view>
+</view>
+<button formType="submit">提交</button>
+</form> 
+<import src="/model/model.wxml"/>
+<template is="areaData" data="{{...item}}"/>
+
+<view wx-if="{{isxieyi==1}}" class="xieyi">
+	<view class="xytitle">入住协议</view>
+	<view class="xqbox">
+		{{protocol}}
+	</view>
+	<view class="yuedu">
+		<checkbox-group bindchange="checkChange">
+		<checkbox value="已阅读"/><text>已阅读入住协议</text>
+		</checkbox-group>
+	</view>
+	<button bindtap="tongyi">同意</button>
+</view>
+ 

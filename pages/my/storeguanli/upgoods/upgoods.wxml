@@ -1,0 +1,110 @@
+<form bindsubmit="savePersonInfo">
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">商品名称<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" name="name" value="{{name}}" type="text"/>
+    </view>
+</view>
+<picker class="weui-cell" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+	<view class="picker weui-cell__ft">
+    	<view><text style="color: #333;">商品类型</text><image class="xing" src="/img/xing.png"></image></view>
+    	<text>{{multiArray[0][multiIndex[0]]}}--{{multiArray[1][multiIndex[1]]}}</text>
+    </view>
+</picker>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">商品原价<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" name="price" value="{{price}}" type="digit"/>
+    </view>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">商品现价<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" name="sale_price" value="{{sale_price}}" type="digit"/>
+    </view>
+</view>
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">商品轮播图<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+</view>
+<view class="section2">
+	<block wx:for="{{tempFilePaths1}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" bindtap="imgYu" data-yu="{{tempFilePaths1}}" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" bindtap="deleteImg" data-type="1" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<image wx-if="{{isshow1==1}}" class="img" data-type="1" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+</view> 
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">商品规格<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <text class="addggbtn" bindtap="addggbtn">+</text>
+</view>
+<view class="section2">
+	<block wx:for="{{guigedata}}" wx:for-item="item" wx:for-index="j" wx:key="key">
+	<view class="upxqbox">	
+		<image class="upimg" data-index="{{j}}" bindtap="edimg" src="{{item.rule_image}}"></image>
+		<view class="addgg"> 
+			<view class="price">
+				<input type="digit" data-index="{{j}}" bindinput="edprice" value="{{item.r_price}}" placeholder="价格（元）"/>
+				<input type="number" data-index="{{j}}" bindinput="ednum" value="{{item.r_num}}" placeholder="件数（个）"/>
+			</view>
+			<view class="guige"><input type="text" data-index="{{j}}" bindinput="edguige" value="{{item.title}}" placeholder="请输入规格"/></view> 
+		</view> 
+		<image class="delgg" data-index="{{j}}" bindtap="delgg" src="/img/del.png"></image>
+	</view> 
+	</block>
+</view> 
+<view class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">商品详情<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+</view>
+<view class="textbox">
+<textarea placeholder="文字描述..." value="{{content}}" name="content"></textarea>
+</view>
+<view class="section2">
+	<block wx:for="{{tempFilePaths2}}" wx:for-item="i" wx:for-index="j" wx:key="key">
+	<view class="imgbox">	
+		<image class="img" bindtap="imgYu" data-yu="{{tempFilePaths2}}" data-src="{{i}}" src="{{i}}"></image>
+		<image class="delbtn" bindtap="deleteImg" data-type="2" data-index="{{j}}" data-src="{{i}}" src="/img/F-icon12x.png"></image>
+	</view>
+	</block>
+	<image wx-if="{{isshow2==1}}" class="img" data-type="2" bindtap="uploadImage" src="/img/S-fatu.png"></image>
+</view> 
+<view class="body">
+	<view class="item2">
+	 	<text>是否参与购买有礼</text>
+	 	<switch class="switch" checked bindchange="switchChange"/>
+	</view>
+</view>	
+<view wx-if="{{ischeck==true}}" class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">红包金额<image class="xing" src="/img/xing.png"></image></view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" type="digit" name="share_price" value="{{share_price}}" placeholder="请输入红包金额（元）"/>
+    </view>
+</view> 
+<view wx-if="{{ischeck==true}}" class="weui-cell">
+    <view class="weui-cell__hd">
+    	<view class="weui-label">红包使用规则</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" type="digit" name="share_rules" value="{{share_price}}" placeholder="输入使用金额（不填默认无门槛）"/>
+    </view>
+</view> 
+<button formType="submit">提交</button>
+</form>  
+ 
+
+ 

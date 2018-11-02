@@ -1,0 +1,2 @@
+@import '../../../model/model.wxss'
+.text textarea{width: 100%; padding: 0 40rpx; height: 150rpx; box-sizing: border-box;}

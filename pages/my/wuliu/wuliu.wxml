@@ -1,0 +1,21 @@
+<view class="top">
+	<image src="/img/s5.png"></image> 
+	<view>
+		[收货地址]{{address.province}}{{address.city}}{{address.county}}{{address.detail}}
+	</view>
+</view>
+<view class="wuliu">
+	<view wx:for="{{wuliu}}" wx:key="key" class="wlitem">
+		<view class="lf">
+			<view class="date">{{item.time[0]}}</view>
+			<view class="time">{{item.time[1]}}</view>
+		</view>
+		<view class="rg">
+			<!--<view class="stname">已发货</view>-->
+			<view class="info">{{item.context}}</view>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{wuliu.length<=0}}" class="kong">暂无物流信息！</view>
+ 

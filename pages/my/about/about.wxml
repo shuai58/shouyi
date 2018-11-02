@@ -1,0 +1,8 @@
+<import src="../../../wxParse/wxParse.wxml"/> 
+<view class="about">
+	<view class="xytitle">关于我们</view>
+	<view class="xqbox">
+		<template is="wxParse" data="{{wxParseData:about.nodes}}"/>
+	</view>
+</view>
+ 

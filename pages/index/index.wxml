@@ -1,0 +1,132 @@
+<view class="diqu">
+	<view class="diqubox" bindtap="isselect">
+		<image class="logo" src="../../img/logo.png"></image>
+		<text wx-if="{{issucc==1}}">{{city}}</text>
+		<button wx-if="{{issucc==0}}" open-type="openSetting" bindopensetting="getLocation">{{city}}</button>
+		<image class="icon-xia" src="../../img/icon-xia.png"></image>
+	</view>
+	<text class="addnav" bindtap="addnav">+</text>
+	<view wx-if="{{addnav==1}}" class="navli">
+		<view bindtap="addshouyi">入住手艺</view>
+		<view bindtap="addstore">我要开店</view>
+	</view>
+</view>
+<view wx-if="{{navbox==1}}" class="navbox">
+	<block wx:for="{{indexclass}}" wx:key="key">
+	<view data-id="{{item.id}}" class="{{item.ison==0?'':'red'}}" bindtap="classclick">{{item.title}}</view>
+	</block>
+	<view data-id="no" class="{{ison==0?'':'red'}}" bindtap="classclick">全部手艺</view>
+</view>
+<map wx-if="{{ismap==1}}" id="map" scale="{{scale}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" 
+latitude="{{latitude}}" longitude ="{{longitude}}" controls="{{controls}}" show-location 
+style="width: 100%; height: {{view.Height}}px;"></map> 
+
+<view wx-if="{{isselect==1}}" class="selectbox">
+	<view class="input">
+		<text class="sback" bindtap="isselect">〈 </text>
+		<input bindinput="bindKeyInput" bindblur="bindBlur" placeholder="输入城市名或拼音查询" placeholder-style="font-size: 30rpx" value="{{inputName}}"></input>
+	</view>
+	<view class="container-inner">
+		<view class="container">
+			<block wx:if="{{isShowLetter}}">
+				<view class="showSlectedLetter">
+					{{toastShowLetter}}
+				</view>
+			</block>
+			<scroll-view scroll-y="true" style="height:{{winHeight}}px" scroll-into-view="{{scrollTopId}}" scroll-top="{{scrollTop}}">
+				<ul class="ul">
+					<li wx:for="{{completeList}}" wx:key="*this" bindtap="bindCity" data-city="{{item.city}}" data-code="{{item.code}}" class="li">{{item.city}}</li>
+				</ul>
+				<view class="selectCity">
+					<view class="hotcity-common">热门城市</view>
+					<view class="weui-grids">
+						<view class="weui-grid" data-code="110000" data-city="北京市" bindtap="bindCity">
+							<view class="weui-grid__label">北京市</view>
+						</view>
+						<view class="weui-grid" data-code="310000" data-city="上海市" bindtap="bindCity">
+							<view class="weui-grid__label">上海市</view>
+						</view>
+						<view class="weui-grid" data-code="440100" data-city="广州市" bindtap="bindCity">
+							<view class="weui-grid__label">广州市</view>
+						</view>
+					</view>
+					<view class="weui-grids">
+						<view class="weui-grid" data-code="440300" data-city="深圳市" bindtap="bindCity">
+							<view class="weui-grid__label">深圳市</view>
+						</view>
+						<view class="weui-grid" data-code="330100" data-city="杭州市" bindtap="bindCity">
+							<view class="weui-grid__label">杭州市</view>
+						</view>
+						<view class="weui-grid" data-code="320100" data-city="南京市" bindtap="bindCity">
+							<view class="weui-grid__label">南京市</view>
+						</view>
+					</view>
+					<view class="weui-grids">
+						<view class="weui-grid" data-code="420100" data-city="武汉市" bindtap="bindCity">
+							<view class="weui-grid__label">武汉市</view>
+						</view>
+						<view class="weui-grid" data-code="120000" data-city="天津市" bindtap="bindCity">
+							<view class="weui-grid__label">天津市</view>
+						</view>
+						<view class="weui-grid" data-code="610100" data-city="郑州市" bindtap="bindCity">
+							<view class="weui-grid__label">郑州市</view>
+						</view>
+					</view>
+				</view>
+
+				<view class="selection" wx:for="{{cityList}}" wx:key="initial">
+					<view class="item_letter" id="{{item.initial}}">{{item.initial}}</view>
+					<view class="item_city" wx:for="{{item.cityInfo}}" wx:for-item="ct" wx:key="id" data-code="{{ct.code}}" data-city="{{ct.city}}" bindtap="bindCity">
+						{{ct.city}}
+					</view>
+				</view>
+			</scroll-view>
+		</view>
+	</view>
+</view>
+
+<cover-view wx-if="{{iscover==1}}" class="coverbox">
+	<cover-view class="head">
+		<cover-view class="storename">{{shouyi.name}}</cover-view>
+	 	<cover-view class="storeimg">
+	 		<cover-image src="{{shouyi.img}}"></cover-image>
+	 	</cover-view>
+	</cover-view>
+	<cover-view class="box">
+		<cover-view class="storeintro" scroll-top="0">
+			<cover-view class="p">
+				{{shouyi.intro}}
+		    </cover-view>
+		</cover-view>
+	</cover-view>
+	<cover-view class="footer">
+		<cover-view class="itembox">
+			<cover-view class="navitem">
+				<cover-image src="/img/s1.png"></cover-image>
+				<cover-view class="name">手艺介绍</cover-view>
+			</cover-view>
+			<cover-view class="navitem" data-urldata="{{shouyi.urldata}}" data-type="1" bindtap="isshow">
+				<cover-image src="/img/s2.png"></cover-image>
+				<cover-view class="name">手艺之家</cover-view>
+			</cover-view>
+			<cover-view class="navitem" data-urldata="{{shouyi.urldata}}" data-type="2" bindtap="isshow">
+				<cover-image src="/img/s3.png"></cover-image>
+				<cover-view class="name">手艺商店</cover-view>
+			</cover-view>
+			<cover-view class="navitem" data-phone="{{shouyi.phone}}" bindtap="telclick">
+				<cover-image src="/img/s4.png"></cover-image>
+				<cover-view class="name">拨打电话</cover-view>
+			</cover-view>
+			<cover-view class="navitem" data-urldata="{{shouyi.urldata}}" bindtap="navigateclick">
+				<cover-image src="/img/s5.png"></cover-image>
+				<cover-view class="name">到这里</cover-view>
+			</cover-view>
+		</cover-view>
+		<cover-view class="closeback" bindtap="closeback">
+			<cover-image src="/img/s7.png"></cover-image>
+		</cover-view>
+	</cover-view>
+</cover-view>
+
+<import src="/template/shouquan/shouquan.wxml"/>
+<template is="tishi" data="{{istrue}}" />
