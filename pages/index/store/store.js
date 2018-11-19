@@ -159,9 +159,91 @@ Page({
 				break;
 		}
 	},
-	telclick: function() {
-		wx.makePhoneCall({
-		  phoneNumber: this.data.storeinfo.tel 
+	telclick: function(e) {
+		console.log(e.currentTarget.dataset.skid)
+		var total_fee = 0;
+		var ski_id = e.currentTarget.dataset.skid;
+		config.requstGet(config.lookIphone, {
+			uid: app.globalData.uid,
+			ski_id: ski_id
+		}, function(res) {
+			if(res.data.code == 0) {
+				wx.makePhoneCall({
+					phoneNumber: res.data.data.tel
+				})
+			} else {
+				if(res.data.data.price != undefined) {
+					console.log(res.data.data)
+					total_fee = res.data.data.price;
+					wx.showModal({
+						title: '友情提示',
+						content: '需要先支付查看电话费用,才能拨打电话！',
+						success: function(res) {
+							if(res.cancel) {
+								//点击取消,默认隐藏弹框
+							} else {
+								//点击确定	              
+								config.requstPost(config.examine, {
+									uid: app.globalData.uid,
+									ski_id: ski_id,
+									total_fee: total_fee
+								}, function(res) {
+									console.log(res.data)
+									if(res.data.state == 1) {
+										var oid = res.data.id;
+										wx.requestPayment({
+											'timeStamp': res.data.timeStamp,
+											'nonceStr': res.data.nonceStr,
+											'package': res.data.package,
+											'signType': res.data.signType,
+											'paySign': res.data.paySign,
+											'success': function(res) {
+												console.log(res)
+												console.log("支付成功！")
+												config.requstGet(config.examines, {
+													uid: app.globalData.uid,
+													oid: oid,
+													state: 1
+												}, function(res) {
+													if(res.data.code == 0) {
+														console.log(res.data.data)
+														wx.makePhoneCall({
+															phoneNumber: res.data.data
+														})
+													}
+												})
+											},
+											'fail': function(res) {
+												console.log(res)
+												wx.showModal({
+													title: '支付失败!',
+													content: '支付失败！',
+													showCancel: false,
+													success: function(res) {
+														config.requstGet(config.examines, {
+															uid: app.globalData.uid,
+															oid: oid,
+															state: 0
+														}, function(res) {})
+													}
+												})
+											}
+										})
+									}
+								})
+							}
+						}
+					})
+				} else {
+					wx.showModal({
+						title: '支付异常!',
+						content: '请从新支付！',
+						showCancel: false,
+						success: function(res) {}
+					})
+				}
+
+			}
 		})
 	},
 	navigateclick: function() {

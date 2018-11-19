@@ -6,9 +6,9 @@ var classdata = [];
 var indexclass = [];
 Page({
 	data: {
-		issucc:1,
-		iscover:0,
-		listData:[],
+		issucc: 1,
+		iscover: 0,
+		listData: [],
 		scale: 14, //缩放
 		Height: "0",
 		controls: '40', //中心点
@@ -18,21 +18,21 @@ Page({
 		addnav: 0,
 		navbox: 1,
 		ismap: 1,
-		isselect:0,
+		isselect: 0,
 		searchLetter: [],
-	    showLetter: "",
-	    winHeight: 0,
-	    cityList: [],
-	    isShowLetter: false,
-	    scrollTop: 0,//置顶高度
-	    scrollTopId: '',//置顶id
-	    city: "定位中",
-	    currentCityCode: '',
-	    inputName: '',
-	    completeList: [],
-	    county: '',
-	    condition: false,
-	    ison:1
+		showLetter: "",
+		winHeight: 0,
+		cityList: [],
+		isShowLetter: false,
+		scrollTop: 0, //置顶高度
+		scrollTopId: '', //置顶id
+		city: "定位中",
+		currentCityCode: '',
+		inputName: '',
+		completeList: [],
+		county: '',
+		condition: false,
+		ison: 1
 	},
 	onReady: function(e) {
 		var that = this;
@@ -50,28 +50,28 @@ Page({
 	},
 	onLoad: function() {
 		wx.showLoading({
-		  title: '数据加载中',
+			title: '数据加载中',
 		})
 		classdata = [];
 		classdata[0] = {
-			id:"no",
-   			datalist:[]
+			id: "no",
+			datalist: []
 		};
 		var that = this;
-		config.requstGet(config.getClass,{},function (res) {
-   			console.log(res.data.data)
-   			indexclass=res.data.data;
-   			for (var i = 0; i < res.data.data.length; i++) {
-   				classdata[i+1] ={
-   					id:res.data.data[i].id,
-   					datalist:[]
-   				} 
-   				indexclass[i].ison = 0;
-   			}
+		config.requstGet(config.getClass, {}, function(res) {
+			console.log(res.data.data)
+			indexclass = res.data.data;
+			for(var i = 0; i < res.data.data.length; i++) {
+				classdata[i + 1] = {
+					id: res.data.data[i].id,
+					datalist: []
+				}
+				indexclass[i].ison = 0;
+			}
 			that.setData({
 				indexclass: indexclass
-			}); 
-	    }) 	 
+			});
+		})
 		const searchLetter = city.searchLetter;
 		const cityList = city.cityList();
 		const sysInfo = wx.getSystemInfoSync();
@@ -112,27 +112,25 @@ Page({
 		this.mapCtx.moveToLocation()
 	},
 	createMarker(point) {
-//		console.log(point)
-		point.mark= JSON.parse(point.mark);
-		let latitude = point.mark.lat//this.strSub();
+		point.mark = JSON.parse(point.mark);
+		let latitude = point.mark.lat //this.strSub();
 		let longitude = point.mark.lon;
 		var iconPath = point.pos_image;
-//		console.log(iconPath)
 		let marker = {
-			iconPath:iconPath,//'/img/dw.png'
+			iconPath: iconPath, //'/img/dw.png'
 			id: point.id || 0,
 			latitude: latitude,
 			longitude: longitude,
 			width: 59,
 			height: 77,
-			callout:{
+			callout: {
 				bgColor: "#48bdeb",
 				content: point.title,
-				color: "#ffffff",	
-				display:"ALWAYS",
-				fontSize:12,
-				padding:4,
-				borderRadius:10
+				color: "#ffffff",
+				display: "ALWAYS",
+				fontSize: 12,
+				padding: 4,
+				borderRadius: 10
 			}
 		};
 		return marker;
@@ -146,15 +144,16 @@ Page({
 				console.log(info)
 				console.log(Number(info.placeLatitude), Number(info.placeLongitude))
 				that.setData({
-					shouyi:{
-						name:info.title,
-						img:info.logo,
-						intro:info.abstract,
-						phone:info.tel,
-						urldata:JSON.stringify(info),
-						urldata2:`lat=${info.mark.lat}&long=${info.mark.lon}&name=${info.title}&address=${info.adder.city+info.adder.county+info.adder.detail}`
+					shouyi: {
+						name: info.title,
+						img: info.logo,
+						intro: info.abstract,
+						phone: info.tel,
+						skid: info.id,
+						urldata: JSON.stringify(info),
+						urldata2: `lat=${info.mark.lat}&long=${info.mark.lon}&name=${info.title}&address=${info.adder.city+info.adder.county+info.adder.detail}`
 					},
-					iscover:1,
+					iscover: 1,
 				})
 				return;
 			}
@@ -186,15 +185,15 @@ Page({
 	},
 	//选择城市
 	bindCity: function(e) {
-		for (var i = 0; i < indexclass.length; i++) {
+		for(var i = 0; i < indexclass.length; i++) {
 			indexclass[i].ison = 0;
 		}
 		this.setData({
 			ison: 1,
-			indexclass:indexclass
-		}) 
+			indexclass: indexclass
+		})
 		wx.showLoading({
-		  title: '数据加载中',
+			title: '数据加载中',
 		})
 		var that = this;
 		var url = `https://apis.map.qq.com/ws/geocoder/v1/?address=${e.currentTarget.dataset.city}市政府&key=${config.key}`;
@@ -209,11 +208,11 @@ Page({
 					latitude: res.data.result.location.lat
 				})
 			},
-			fail:res=>{
+			fail: res => {
 				console.log("获取经纬度失败！")
 			}
 		})
-		
+
 		this.setData({
 			condition: true,
 			city: e.currentTarget.dataset.city,
@@ -226,10 +225,10 @@ Page({
 			isselect: 0,
 			ismap: 1
 		})
-		for (var i = 0; i < classdata.length; i++) {
-			if (classdata[i].id!="no") {
-				classdata[i].datalist =[];
-			} 
+		for(var i = 0; i < classdata.length; i++) {
+			if(classdata[i].id != "no") {
+				classdata[i].datalist = [];
+			}
 		}
 		that.getdata(e.currentTarget.dataset.city);
 	},
@@ -244,7 +243,7 @@ Page({
 			inputName: e.detail.value,
 			scrollTop: 0
 		})
-		if (e.detail.value=="") {
+		if(e.detail.value == "") {
 			this.setData({
 				completeList: []
 			})
@@ -265,7 +264,6 @@ Page({
 				return(text && text == sd)
 			}
 		)
-		//在城市数据中，添加简拼到“shorter”属性，就可以实现简拼搜索
 		let tempShorter = cityList.filter(
 			itemShorter => {
 				if(itemShorter.shorter) {
@@ -316,7 +314,8 @@ Page({
 					finalCityList.push(testObj)
 				})
 			this.setData({
-				completeList: finalCityList,phone
+				completeList: finalCityList,
+				phone
 			})
 		} else {
 			return
@@ -331,35 +330,120 @@ Page({
 	isshow: function(e) {
 		console.log(e.currentTarget.dataset);
 		var that = this;
-		switch (e.currentTarget.dataset.type){
+		switch(e.currentTarget.dataset.type) {
 			case '1':
 				wx.navigateTo({
-				  url: `/pages/index/store/store?urldata=${e.currentTarget.dataset.urldata}&type=${e.currentTarget.dataset.type}` 
+					url: `/pages/index/store/store?urldata=${e.currentTarget.dataset.urldata}&type=${e.currentTarget.dataset.type}`
 				})
 				break;
 			case '2':
 				wx.navigateTo({
-				  url: `/pages/index/store/store?urldata=${e.currentTarget.dataset.urldata}&type=${e.currentTarget.dataset.type}` 
+					url: `/pages/index/store/store?urldata=${e.currentTarget.dataset.urldata}&type=${e.currentTarget.dataset.type}`
 				})
 				break;
 			default:
 				break;
 		}
 		that.setData({
-			iscover:0
+			iscover: 0
 		})
 	},
 	telclick: function(e) {
 		console.log(e.currentTarget.dataset.phone)
-		wx.makePhoneCall({
-		  phoneNumber: e.currentTarget.dataset.phone
+		console.log(e.currentTarget.dataset.skid)
+		//		wx.makePhoneCall({
+		//		  phoneNumber: e.currentTarget.dataset.phone
+		//		})
+		var total_fee = 0;
+		var ski_id = e.currentTarget.dataset.skid;
+		config.requstGet(config.lookIphone, {
+			uid: app.globalData.uid,
+			ski_id: ski_id
+		}, function(res) {
+			if(res.data.code == 0) {
+				wx.makePhoneCall({
+					phoneNumber: res.data.data.tel
+				})
+			} else {
+				if(res.data.data.price != undefined) {
+					console.log(res.data.data)
+					total_fee = res.data.data.price;
+					wx.showModal({
+						title: '友情提示',
+						content: '需要先支付查看电话费用,才能拨打电话！',
+						success: function(res) {
+							if(res.cancel) {
+								//点击取消,默认隐藏弹框
+							} else {
+								//点击确定	              
+								config.requstPost(config.examine, {
+									uid: app.globalData.uid,
+									ski_id: ski_id,
+									total_fee: total_fee
+								}, function(res) {
+									console.log(res.data)
+									if(res.data.state == 1) {
+										var oid = res.data.id;
+										wx.requestPayment({
+											'timeStamp': res.data.timeStamp,
+											'nonceStr': res.data.nonceStr,
+											'package': res.data.package,
+											'signType': res.data.signType,
+											'paySign': res.data.paySign,
+											'success': function(res) {
+												console.log(res)
+												console.log("支付成功！")
+												config.requstGet(config.examines, {
+													uid: app.globalData.uid,
+													oid: oid,
+													state: 1
+												}, function(res) {
+													if(res.data.code == 0) {
+														console.log(res.data.data)
+														wx.makePhoneCall({
+															phoneNumber: res.data.data
+														})
+													}
+												})
+											},
+											'fail': function(res) {
+												console.log(res)
+												wx.showModal({
+													title: '支付失败!',
+													content: '支付失败！',
+													showCancel: false,
+													success: function(res) {
+														config.requstGet(config.examines, {
+															uid: app.globalData.uid,
+															oid: oid,
+															state: 0
+														}, function(res) {})
+													}
+												})
+											}
+										})
+									}
+								})
+							}
+						}
+					})
+				} else {
+					wx.showModal({
+						title: '支付异常!',
+						content: '请从新支付！',
+						showCancel: false,
+						success: function(res) {}
+					})
+				}
+
+			}
 		})
 	},
 	navigateclick: function(e) {
 		var info = JSON.parse(e.currentTarget.dataset.urldata);
 		console.log(info)
 		var that = this;
-		var addre = info.adder.city+info.adder.county+info.title;
+		var addre = info.adder.city + info.adder.county + info.title;
 		wx.openLocation({
 			latitude: Number(info.mark.lat),
 			longitude: Number(info.mark.lon),
@@ -374,7 +458,7 @@ Page({
 			isselect: 0,
 			ismap: 1
 		})
- 		wx.getLocation({
+		wx.getLocation({
 			type: 'wgs84', //返回可以用于wx.openLocation的经纬度
 			success: (res) => {
 				console.log(res)
@@ -388,17 +472,17 @@ Page({
 				wx.request({
 					url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${latitude},${longitude}&key=${config.key}`,
 					success: res => {
-						console.log(res.data.result.ad_info.city+res.data.result.ad_info.adcode);
+						console.log(res.data.result.ad_info.city + res.data.result.ad_info.adcode);
 						that.setData({
 							city: res.data.result.ad_info.city,
-							issucc:1
+							issucc: 1
 						})
 						that.getdata(res.data.result.ad_info.city)
 					},
-					fail:res=>{
+					fail: res => {
 						that.setData({
 							city: "定位失败",
-							issucc:0,
+							issucc: 0,
 							scale: 14,
 							longitude: 113.62493,
 							latitude: 34.74725
@@ -407,17 +491,17 @@ Page({
 					}
 				})
 			},
-			fail:res=>{ 
-			    that.setData({
+			fail: res => {
+				that.setData({
 					city: "定位失败",
-					issucc:0,
+					issucc: 0,
 					scale: 14,
 					longitude: 113.62493,
 					latitude: 34.74725
 				})
 				that.getdata('郑州市')
 			}
-		}); 
+		});
 	},
 	getLocation: function() {
 		this.userLocation();
@@ -425,45 +509,45 @@ Page({
 	classclick: function(e) {
 		console.log(e.currentTarget.dataset)
 		console.log(indexclass)
-		for (var i = 0; i < indexclass.length; i++) {
+		for(var i = 0; i < indexclass.length; i++) {
 			indexclass[i].ison = 0;
-			if(indexclass[i].id==e.currentTarget.dataset.id){
+			if(indexclass[i].id == e.currentTarget.dataset.id) {
 				indexclass[i].ison = 1;
 			}
-			if (e.currentTarget.dataset.id=="no") {
+			if(e.currentTarget.dataset.id == "no") {
 				this.setData({
 					ison: 1
-				}) 
-			}else{
+				})
+			} else {
 				this.setData({
 					ison: 0
-				}) 
+				})
 			}
 		}
-		for (var i = 0; i < classdata.length; i++) {
-			if (e.currentTarget.dataset.id==classdata[i].id) {
+		for(var i = 0; i < classdata.length; i++) {
+			if(e.currentTarget.dataset.id == classdata[i].id) {
 				this.setData({
 					listData: classdata[i].datalist
-				}) 
+				})
 			}
 		}
 		this.setData({
 			indexclass: indexclass
-		}) 
+		})
 		this.getSchoolMarkers()
 	},
 	addshouyi: function() {
 		console.log(app.globalData.shenfen);
-		var that =this;
+		var that = this;
 		that.setData({
-			addnav:0
+			addnav: 0
 		});
-		if(app.globalData.shenfen==0) {
+		if(app.globalData.shenfen == 0) {
 			that.setData({
-		      istrue: 1,
-		      ismap: 0
-		    })
-		}else{
+				istrue: 1,
+				ismap: 0
+			})
+		} else {
 			wx.navigateTo({
 				url: `/pages/shouyi/shouyi`
 			})
@@ -471,72 +555,74 @@ Page({
 	},
 	addstore: function() {
 		console.log(app.globalData.shenfen);
-		var that =this;
+		var that = this;
 		that.setData({
-			addnav:0
+			addnav: 0
 		});
-		if(app.globalData.shenfen==0) {
+		if(app.globalData.shenfen == 0) {
 			that.setData({
-		      istrue: 1,
-		      ismap: 0
-		    })
-		}else{
+				istrue: 1,
+				ismap: 0
+			})
+		} else {
 			wx.navigateTo({
 				url: `/pages/kaidian/kaidian`
 			})
 		}
 	},
-	getdata:function (city) {
+	getdata: function(city) {
 		var that = this;
-		config.requstGet(config.showSki,{city:city},function (res) {
+		config.requstGet(config.showSki, {
+			city: city
+		}, function(res) {
 			console.log(res.data.data)
-			if (res.data.data=="没有你想要的数据") {
+			if(res.data.data == "没有你想要的数据") {
 				wx.hideLoading();
 				wx.showToast({
-				  title: '该城市没人入住手艺！',
-				  icon: 'none',
-				  duration: 2000
+					title: '该城市没人入住手艺！',
+					icon: 'none',
+					duration: 2000
 				})
-			} else{
-				download(res.data.data.length,res.data.data,function(res){
+			} else {
+				download(res.data.data.length, res.data.data, function(res) {
 					console.log(res)
 					that.setData({
 						listData: res
-					}) 
+					})
 					wx.hideLoading();
 					classdata[0].datalist = res;
-					for (var i = 0; i < res.length; i++) {
-						for (var j = 0; j < classdata.length; j++) {
-							if (res[i].s_class == classdata[j].id) {
+					for(var i = 0; i < res.length; i++) {
+						for(var j = 0; j < classdata.length; j++) {
+							if(res[i].s_class == classdata[j].id) {
 								classdata[j].datalist.push(res[i])
-							} 
+							}
 						}
 					}
 					console.log(classdata)
 					that.getSchoolMarkers()
 					wx.showToast({
-					  title: '点击地图头像,可了解更多手艺人信息！',
-					  icon: 'none',
-					  duration: 2000
+						title: '点击地图头像,可了解更多手艺人信息！',
+						icon: 'none',
+						duration: 2000
 					})
-				})	
+				})
 			}
-				
-	    }) 	 
+
+		})
 	},
 	quxiao() {
 		this.setData({
-	      istrue: 0,
-	      ismap: 1
-	    })
+			istrue: 0,
+			ismap: 1
+		})
 	},
 	queding(e) {
 		console.log(e)
 		var that = this;
 		that.setData({
-	      istrue: 0,
-	      ismap: 1
-	    })
+			istrue: 0,
+			ismap: 1
+		})
 		if(e.detail.rawData != undefined) {
 			console.log(e.detail.rawData)
 			// 获取用户信息
@@ -567,29 +653,30 @@ Page({
 			})
 		}
 	},
-	onShareAppMessage: function () {
-	    return {
-	      title: '手艺人',
-	      path: '/pages/index/index'
-	    }
+	onShareAppMessage: function() {
+		return {
+			title: '手艺人',
+			path: '/pages/index/index'
+		}
 	}
 })
-function download(i,downdata,callback){
+
+function download(i, downdata, callback) {
 	i--;
-	var downurl = config.baseUrl+downdata[i].pos_image;
-	downdata[i].logo=config.baseUrl+downdata[i].logo;
+	var downurl = config.baseUrl + downdata[i].pos_image;
+	downdata[i].logo = config.baseUrl + downdata[i].logo;
 	console.log(downurl)
 	wx.downloadFile({
-	  url: downurl, //仅为示例，并非真实的资源
-	  success: function(res) {
-	    if (res.statusCode === 200) {
-	    	downdata[i].pos_image = res.tempFilePath;
-	    	if(i==0){
-				callback(downdata) 
-		  	}else{
-		  		download(i,downdata,callback)
-		  	}  	
-	    }
-	  }
+		url: downurl, //仅为示例，并非真实的资源
+		success: function(res) {
+			if(res.statusCode === 200) {
+				downdata[i].pos_image = res.tempFilePath;
+				if(i == 0) {
+					callback(downdata)
+				} else {
+					download(i, downdata, callback)
+				}
+			}
+		}
 	})
 }

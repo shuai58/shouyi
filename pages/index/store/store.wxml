@@ -51,7 +51,7 @@
 				<image src="/img/s3.png"></image>
 				<view class="name">手艺商店</view>
 			</view>
-			<view class="navitem" bindtap="telclick">
+			<view class="navitem" data-skid="{{storeinfo.id}}" bindtap="telclick">
 				<image src="/img/s4.png"></image>
 				<view class="name">拨打电话</view>
 			</view>

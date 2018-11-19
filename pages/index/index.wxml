@@ -113,7 +113,7 @@ style="width: 100%; height: {{view.Height}}px;"></map>
 				<cover-image src="/img/s3.png"></cover-image>
 				<cover-view class="name">手艺商店</cover-view>
 			</cover-view>
-			<cover-view class="navitem" data-phone="{{shouyi.phone}}" bindtap="telclick">
+			<cover-view class="navitem" data-phone="{{shouyi.phone}}" data-skid="{{shouyi.skid}}" bindtap="telclick">
 				<cover-image src="/img/s4.png"></cover-image>
 				<cover-view class="name">拨打电话</cover-view>
 			</cover-view>

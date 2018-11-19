@@ -163,21 +163,14 @@ Page({
 										  'success':function(res){
 										  	console.log(res)
 										   		console.log("支付成功！")
-													wx.showModal({
-													  title: '支付成功!',
-													  content: '已成功发布并置顶！',
-													  showCancel:false,
-													  success: function(res) {
-				 											config.requstGet(config.examines,{uid:app.globalData.uid,oid:oid,state:1},function (res) {
-				 												if (res.data.code==0) {
-				 													console.log(res.data.data)
-				 													wx.makePhoneCall({
-																	  phoneNumber:res.data.data
-																	})	
-				 												}
-				 											})
-													  }
-													})
+													config.requstGet(config.examines,{uid:app.globalData.uid,oid:oid,state:1},function (res) {
+		 												if (res.data.code==0) {
+		 													console.log(res.data.data)
+		 													wx.makePhoneCall({
+															  phoneNumber:res.data.data
+															})	
+		 												}
+		 											})
 										  },
 										  'fail':function(res){
 										  	console.log(res)
@@ -186,7 +179,7 @@ Page({
 												  content: '支付失败！',
 												  showCancel:false,
 												  success: function(res) {
- 														config.requstGet(config.examines,{uid:app.globalData.uid,oid:oid,state:1},function (res) {
+ 														config.requstGet(config.examines,{uid:app.globalData.uid,oid:oid,state:0},function (res) {
  														})
 												  }
 												})
